@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DB_Models;
+using DB_Models.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,21 @@ namespace DB_ex1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                LoadGridEmployee();
+            }
+        }
 
+        public void LoadGridEmployee()
+        {
+            EmployeeModel emplyeeModel = new EmployeeModel();
+            List<Employee> lstEmployee = emplyeeModel.ListAll();
+            if(lstEmployee != null)
+            {
+                gvEmployee.DataSource = lstEmployee;
+                gvEmployee.DataBind();
+            }
         }
     }
 }

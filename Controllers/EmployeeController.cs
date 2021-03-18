@@ -12,9 +12,10 @@ namespace DB_ex1.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            var iplEmployee = new EmployeeModel();
-            var model = iplEmployee.ListAll();
-            return View(model);
+            //var iplEmployee = new EmployeeModel();
+            //var model = iplEmployee.ListAll();
+            //return View(model);
+            return null;
         }
 
         // GET: Employee/Details/5
