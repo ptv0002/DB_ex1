@@ -21,8 +21,8 @@ namespace DB_ex1
 
         public void LoadGridEmployee()
         {
-            EmployeeModel emplyeeModel = new EmployeeModel();
-            List<Employee> lstEmployee = emplyeeModel.ListAll();
+            EmployeeModel employeeModel = new EmployeeModel();
+            List<Employee> lstEmployee = employeeModel.ListAll();
             if(lstEmployee != null)
             {
                 gvEmployee.DataSource = lstEmployee;
