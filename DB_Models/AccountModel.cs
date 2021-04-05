@@ -25,5 +25,14 @@ namespace DB_Models
             var res = context.Database.SqlQuery<bool>("Sp_Account_Login @Username, @Password", sqlParams).SingleOrDefault();
             return res;
         }
+        public bool CheckEmail (string email)
+        {
+            object[] sqlParams =
+            {
+                new SqlParameter("@Email", email)
+            };
+            var res = context.Database.SqlQuery<bool>("Sp_Account_CheckEmail @Email", sqlParams).SingleOrDefault();
+            return res;
+        }
     }
 }

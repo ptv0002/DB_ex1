@@ -11,43 +11,52 @@ namespace DB_ex1
 {
 
 
-    public partial class Main
+    public partial class Login1
     {
 
         /// <summary>
-        /// cpHead control.
+        /// LoginLayoutHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpHead;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder LoginLayoutHead;
 
         /// <summary>
-        /// form2 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// cpMain control.
+        /// LoginCardHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpMain;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder LoginCardHeader;
 
         /// <summary>
-        /// cpScript control.
+        /// LoginCardBody control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpScript;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder LoginCardBody;
+
+        /// <summary>
+        /// LoginCardFooter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder LoginCardFooter;
     }
 }

@@ -216,6 +216,7 @@ caption {
   color: #6c757d;
   text-align: left;
   caption-side: bottom;
+    height: 58px;
 }
 
 th {
@@ -10029,6 +10030,7 @@ body {
   min-width: 0;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  background-color: #f8f9fa;
 }
 
 #layoutSidenav {

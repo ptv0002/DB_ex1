@@ -1,12 +1,9 @@
-﻿
-@{
-    Layout = null;
-}
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="DB_ex1.Login1" %>
 
 <!DOCTYPE html>
 
 <html>
-<head>
+<head runat="server">
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,23 +13,33 @@
     <title>Login</title>
     <link href="/Assets/css/styles.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <asp:ContentPlaceHolder ID="LoginLayoutHead" runat="server">
+    </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div id="layoutAuthentication">
+    <form id="form1" runat="server">
+        <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                @RenderBody()
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-        <div>
+                                <div class="card-header"><asp:ContentPlaceHolder ID="LoginCardHeader" runat="server"></asp:ContentPlaceHolder></div>
+                                <div class="card-body"><asp:ContentPlaceHolder ID="LoginCardBody" runat="server"></asp:ContentPlaceHolder></div>
+                                <div class="card-footer text-center">
+                                    <div class="small">
+                                        <asp:ContentPlaceHolder ID="LoginCardFooter" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </main>
+         </div>
+                               
             <div id="layoutAuthentication_footer">
                 <footer class="py-4 bg-light mt-auto">
                     <div class="d-flex align-items-center justify-content-between small">
@@ -46,9 +53,6 @@
                 </footer>
             </div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="/Assets/js/scripts.js"></script>
+    </form>
 </body>
 </html>
