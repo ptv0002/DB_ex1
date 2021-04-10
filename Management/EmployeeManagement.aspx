@@ -4,7 +4,7 @@
     <asp:Label Font-Bold="true" ForeColor="Black" Font-Size="XX-Large" runat="server" >Employees</asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    <asp:LinkButton OnCommand="AddEmployee" runat="server" ForeColor="#333333" BorderWidth="10" BorderColor="lightseagreen">Add</asp:LinkButton>
+    <asp:LinkButton ForeColor="#333333" BorderWidth="10" BorderColor="lightseagreen" runat="server" href="/Forms/EmployeeAdd.aspx">Add</asp:LinkButton>    
     <asp:GridView ID="gvEmployee" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
         <Columns>
             <asp:CommandField ShowEditButton="True" />

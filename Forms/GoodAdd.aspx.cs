@@ -13,5 +13,16 @@ namespace DB_ex1.Forms
         {
 
         }
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("/Management/GoodManagement.aspx");
+        }
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Management/GoodManagement.aspx");
+        }
+
     }
 }
