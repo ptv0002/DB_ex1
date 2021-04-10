@@ -21,7 +21,7 @@ namespace DB_ex1
             var res = accountModel.CheckEmail(email.Text);
             if (res)
             {
-                LoginError.Text = "Your email is already been registered. Use a different email or go to back to login to reset Password.";
+                LoginError.Text = "Your email is already been registered. Use a different email or reset your password.";
                 LoginError.ForeColor = System.Drawing.Color.Red;
             }
             else

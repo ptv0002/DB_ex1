@@ -21,9 +21,9 @@ namespace DB_ex1
             var res = accountModel.Login(username.Text,password.Text);
             if (res)
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("/Default.aspx");
             } else {  
-                LoginError.Text = "Your username or Password is incorrect";  
+                LoginError.Text = "Your username or password is incorrect";  
                 LoginError.ForeColor = System.Drawing.Color.Red;  
   
             }

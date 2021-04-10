@@ -14,8 +14,7 @@
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 
-    <asp:ContentPlaceHolder ID="cpHead" runat="server">
-    </asp:ContentPlaceHolder>
+    
 </head>
 <body>
     <form id="form2" runat="server">
@@ -40,7 +39,7 @@
                             <a class="dropdown-item" href="#">Settings</a>
                             <a class="dropdown-item" href="#">Activity Log</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/Login.aspx">Logout</a>
+                            <a class="dropdown-item" href="/Login/Login.aspx">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -75,9 +74,9 @@
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
-                        <div class="container-fluid">
-                            <asp:ContentPlaceHolder ID="cpMain" runat="server">
-                            </asp:ContentPlaceHolder>
+                        <div class="container-fluid"> 
+                            <div><asp:ContentPlaceHolder ID="cpHead" runat="server"></asp:ContentPlaceHolder></div>
+                            <div><asp:ContentPlaceHolder ID="cpMain" runat="server"></asp:ContentPlaceHolder></div>
                         </div>
                     </main>
                     <div id="layoutAuthentication_footer">

@@ -26,7 +26,7 @@ namespace DB_ex1
             }
             else
             {
-                LoginError.Text = "Your email is not registered. Please create new account.";
+                LoginError.Text = "Your email is not registered. Please create new an account.";
                 LoginError.ForeColor = System.Drawing.Color.Red;
             }
         }
