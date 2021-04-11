@@ -6,21 +6,21 @@ namespace DB_Models.Framework
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Goods_Group
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Goods_Group()
+        public Category()
         {
             Goods = new HashSet<Good>();
         }
 
         [Key]
-        public int goodsGroupId { get; set; }
+        public int categoryId { get; set; }
 
         [StringLength(50)]
-        public string GroupName { get; set; }
+        public string CategoryName { get; set; }
 
-        public bool? GroupStatus { get; set; }
+        public bool? CategoryStatus { get; set; }
 
         public DateTime? CreateDate { get; set; }
 

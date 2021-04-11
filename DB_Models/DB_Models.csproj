@@ -64,7 +64,7 @@
     <Compile Include="Framework\Fixed_variable.cs" />
     <Compile Include="Framework\Good.cs" />
     <Compile Include="EmployeeModel.cs" />
-    <Compile Include="Framework\Goods_Group.cs" />
+    <Compile Include="Framework\Category.cs" />
     <Compile Include="Framework\Import_Info.cs" />
     <Compile Include="Framework\InOut_Goods.cs" />
     <Compile Include="Framework\Supplier.cs" />

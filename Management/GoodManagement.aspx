@@ -12,7 +12,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="goodsId" HeaderText="ID" ReadOnly="True" />
-            <asp:BoundField DataField="GoodsGroupId" HeaderText="Group ID" ReadOnly="True" />
+            <asp:BoundField DataField="CategoryId" HeaderText="Category ID" ReadOnly="True" />
             <asp:BoundField DataField="GoodsName" HeaderText="Name" ReadOnly="True" />
             <asp:BoundField DataField="GoodsStatus" HeaderText="Status" ReadOnly="True" />
             <asp:BoundField DataField="GoodsCode" HeaderText="Bar Code" ReadOnly="True" />

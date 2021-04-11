@@ -48,7 +48,7 @@ namespace DB_Models.Framework
         [StringLength(50)]
         public string UpdateBy { get; set; }
 
-        public virtual Goods_Group Goods_Group { get; set; }
+        public virtual Category Goods_Group { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InOut_Goods> InOut_Goods { get; set; }

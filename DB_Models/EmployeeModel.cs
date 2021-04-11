@@ -37,5 +37,14 @@ namespace DB_Models
                 " where employeeId= " + employee.employeeId + ";";
             context.Database.ExecuteSqlCommand(cmd);
         }
+        public void InsertEmployee(Employee employee)
+        {
+            // Insert new employee into database
+            string cmd = "insert into Employee (FirstName, LastName, EmployeeStatus, PhoneNumber," +
+                " EmployeeAddress, CreateBy, CreateDate) values ('" + employee.FirstName +
+                "', '" + employee.LastName + "', 1, '" + employee.PhoneNumber +
+                "', '" + employee.EmployeeAddress + "', '" + employee.CreateBy + "', GETDATE());";
+            context.Database.ExecuteSqlCommand(cmd);
+        }
     }
 }

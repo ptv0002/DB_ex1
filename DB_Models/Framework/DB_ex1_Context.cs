@@ -19,7 +19,7 @@ namespace DB_Models.Framework
         public virtual DbSet<Export_Info> Export_Info { get; set; }
         public virtual DbSet<Fixed_variable> Fixed_variable { get; set; }
         public virtual DbSet<Good> Goods { get; set; }
-        public virtual DbSet<Goods_Group> Goods_Group { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Import_Info> Import_Info { get; set; }
         public virtual DbSet<InOut_Goods> InOut_Goods { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
@@ -146,15 +146,15 @@ namespace DB_Models.Framework
                 .Property(e => e.UpdateBy)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Goods_Group>()
-                .Property(e => e.GroupName)
+            modelBuilder.Entity<Category>()
+                .Property(e => e.CategoryName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Goods_Group>()
+            modelBuilder.Entity<Category>()
                 .Property(e => e.CreateBy)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Goods_Group>()
+            modelBuilder.Entity<Category>()
                 .Property(e => e.UpdateBy)
                 .IsUnicode(false);
 
