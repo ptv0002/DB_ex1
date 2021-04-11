@@ -6,7 +6,11 @@
     <asp:LinkButton runat="server" ForeColor="#333333" BorderWidth="10" BorderColor="lightseagreen" href="/Forms/GoodAdd.aspx">Add</asp:LinkButton>
     <asp:GridView ID="gvEmployee" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
         <Columns>
-            <asp:CommandField ShowEditButton="True" />
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:LinkButton ForeColor="#333333" runat="server" href="/Forms/GoodEdit.aspx">Edit</asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="goodsId" HeaderText="ID" ReadOnly="True" />
             <asp:BoundField DataField="GoodsGroupId" HeaderText="Group ID" ReadOnly="True" />
             <asp:BoundField DataField="GoodsName" HeaderText="Name" ReadOnly="True" />

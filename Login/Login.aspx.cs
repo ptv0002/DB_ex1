@@ -16,16 +16,17 @@ namespace DB_ex1
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
             AccountModel accountModel = new AccountModel();
+            // Check if combo of username and password is in the database
             var res = accountModel.Login(username.Text,password.Text);
             if (res)
             {
+                // Redirect to default page if login is successful
                 Response.Redirect("/Default.aspx");
             } else {  
+                // Display error message if login fails
                 LoginError.Text = "Your username or password is incorrect";  
                 LoginError.ForeColor = System.Drawing.Color.Red;  
-  
             }
         }
     }

@@ -7,10 +7,14 @@
     <asp:LinkButton ForeColor="#333333" BorderWidth="10" BorderColor="lightseagreen" runat="server" href="/Forms/EmployeeAdd.aspx">Add</asp:LinkButton>    
     <asp:GridView ID="gvEmployee" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
         <Columns>
-            <asp:CommandField ShowEditButton="True" />
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:LinkButton ForeColor="#333333" runat="server" href='<%#"/Forms/EmployeeEdit.aspx?employeeId="+DataBinder.Eval(Container.DataItem,"employeeId") %>'>Edit</asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="employeeId" HeaderText="ID" ReadOnly="True" />
-            <asp:BoundField DataField="LastName" HeaderText="Last name" ReadOnly="True" />
             <asp:BoundField DataField="FirstName" HeaderText="First name" ReadOnly="True" />
+            <asp:BoundField DataField="LastName" HeaderText="Last name" ReadOnly="True" />
             <asp:BoundField DataField="EmployeeStatus" HeaderText="Status" ReadOnly="True" />
             <asp:BoundField DataField="EmployeeAddress" HeaderText="Employee address" ReadOnly="True" />
             <asp:BoundField DataField="PhoneNumber" HeaderText="Phone number" ReadOnly="True" />

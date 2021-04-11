@@ -19,7 +19,7 @@ namespace DB_ex1
             }
         }
 
-        public void LoadGridEmployee()
+        protected void LoadGridEmployee()
         {
             EmployeeModel employeeModel = new EmployeeModel();
             List<Employee> lstEmployee = employeeModel.ListAll();
@@ -29,6 +29,5 @@ namespace DB_ex1
                 gvEmployee.DataBind();
             }
         }
-        
     }
 }

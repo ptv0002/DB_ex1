@@ -15,8 +15,6 @@ namespace DB_ex1.Forms
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
-
             Response.Redirect("/Management/EmployeeManagement.aspx");
         }
         

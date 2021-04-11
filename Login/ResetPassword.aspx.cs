@@ -16,13 +16,12 @@ namespace DB_ex1
         }
         protected void btnResetPw_Click(object sender, EventArgs e)
         {
-
+            // Check if email has been registered, if not, reset password fails
             AccountModel accountModel = new AccountModel();
             var res = accountModel.CheckEmail(email.Text);
             if (res)
             {
                 Response.Redirect("Login.aspx");
-
             }
             else
             {

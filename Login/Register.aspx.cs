@@ -16,17 +16,17 @@ namespace DB_ex1
         }
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-
+            // Check if email is in the database
             AccountModel accountModel = new AccountModel();
             var res = accountModel.CheckEmail(email.Text);
             if (res)
             {
+                // if res = 1, email is already been registered, new register fails
                 LoginError.Text = "Your email is already been registered. Use a different email or reset your password.";
                 LoginError.ForeColor = System.Drawing.Color.Red;
             }
             else
             {
-                
                 Response.Redirect("Login.aspx");
             }
         }

@@ -38,7 +38,7 @@
             <asp:TableCell></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="createBy" ErrorMessage="Please enter your name/employeeID" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>        
+            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="createBy" ErrorMessage="Please enter your name/employee ID" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>        
             <asp:TableCell></asp:TableCell>        
         </asp:TableRow>
     </asp:Table>

@@ -10,7 +10,7 @@
         <div class="mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
         <div><asp:Label runat="server">Email</asp:Label></div>
         <div><asp:TextBox ID="email" runat="server" ></asp:TextBox></div>  
-        <div class="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="email" ErrorMessage="Please Enter Your Email" ForeColor="Red"></asp:RequiredFieldValidator></div>
+        <div class="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="email" ErrorMessage="Please enter your email" ForeColor="Red"></asp:RequiredFieldValidator></div>
         <a class="small" href="/Login/Login.aspx">Return to login</a>
         <div><asp:Button class= "btn btn-primary" ID="ResetPasswordButton" runat="server" Text="Reset Password" onclick="btnResetPw_Click" Width="233px" /></div>
     </div>
