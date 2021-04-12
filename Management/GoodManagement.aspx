@@ -4,15 +4,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
     <asp:LinkButton runat="server" ForeColor="#333333" BorderWidth="10" BorderColor="lightseagreen" href="/Forms/GoodAdd.aspx">Add</asp:LinkButton>
-    <asp:GridView ID="gvEmployee" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
+    <asp:GridView ID="gvGood" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:LinkButton ForeColor="#333333" runat="server" href="/Forms/GoodEdit.aspx">Edit</asp:LinkButton>
+                    <asp:LinkButton ForeColor="#333333" runat="server" href='<%#"/Forms/GoodEdit.aspx?goodsId="+DataBinder.Eval(Container.DataItem,"goodsId") %>'>Edit</asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="goodsId" HeaderText="ID" ReadOnly="True" />
-            <asp:BoundField DataField="CategoryId" HeaderText="Category ID" ReadOnly="True" />
+            <asp:BoundField DataField="categoryName" HeaderText="Category" ReadOnly="True" />
             <asp:BoundField DataField="GoodsName" HeaderText="Name" ReadOnly="True" />
             <asp:BoundField DataField="GoodsStatus" HeaderText="Status" ReadOnly="True" />
             <asp:BoundField DataField="GoodsCode" HeaderText="Bar Code" ReadOnly="True" />

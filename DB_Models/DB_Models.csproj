@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
+    <Compile Include="CategoryModel.cs" />
     <Compile Include="Framework\Account.cs" />
     <Compile Include="Framework\CardType.cs" />
     <Compile Include="Framework\Customer.cs" />

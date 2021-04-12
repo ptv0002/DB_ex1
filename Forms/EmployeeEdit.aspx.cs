@@ -36,7 +36,6 @@ namespace DB_ex1.Forms
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            emId = Convert.ToInt32(Request.QueryString["employeeId"].ToString());
             EmployeeModel employeeModel = new EmployeeModel();
             Employee employee = new Employee();
 

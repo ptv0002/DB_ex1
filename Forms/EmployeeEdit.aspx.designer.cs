@@ -15,15 +15,6 @@ namespace DB_ex1.Forms
     {
 
         /// <summary>
-        /// LoginError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoginError;
-
-        /// <summary>
         /// eId control.
         /// </summary>
         /// <remarks>

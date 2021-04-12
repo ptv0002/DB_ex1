@@ -11,7 +11,7 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell><asp:TextBox ID="goodsName" runat="server" ></asp:TextBox></asp:TableCell>
-            <asp:TableCell><asp:DropDownList ID="category" runat="server" ></asp:DropDownList></asp:TableCell>
+            <asp:TableCell><asp:DropDownList ID="ddCategory" runat="server" ></asp:DropDownList></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell CssClass="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="goodsName" ErrorMessage="Please enter good's name" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>

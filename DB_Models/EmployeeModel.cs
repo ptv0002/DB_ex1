@@ -34,7 +34,7 @@ namespace DB_Models
                 "',EmployeeAddress= '" + employee.EmployeeAddress + 
                 "',EmployeeStatus= " + Convert.ToByte(employee.EmployeeStatus) +
                 ",UpdateBy= '" + employee.UpdateBy + "',UpdateDate = GETDATE()" +
-                " where employeeId= " + employee.employeeId + ";";
+                " where employeeId= " + employee.employeeId;
             context.Database.ExecuteSqlCommand(cmd);
         }
         public void InsertEmployee(Employee employee)

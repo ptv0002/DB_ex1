@@ -3,7 +3,6 @@
     <asp:Label Font-Bold="true" ForeColor="Black" Font-Size="XX-Large" runat="server" BorderWidth="10" BorderColor="lightseagreen">Edit Employee</asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    <asp:Label ID="LoginError" runat="server"></asp:Label> 
     <asp:Table CellPadding="4" runat="server" BackColor="#e6f2f2" BorderColor="LightSeaGreen" BorderWidth="10">
         <asp:TableRow>
             <asp:TableCell Text="Employee ID: "><asp:Label ID="eId" runat="server"/></asp:TableCell>
