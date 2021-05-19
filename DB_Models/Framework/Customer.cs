@@ -15,7 +15,7 @@ namespace DB_Models.Framework
             Export_Info = new HashSet<Export_Info>();
         }
 
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(50)]
         public string FirstName { get; set; }

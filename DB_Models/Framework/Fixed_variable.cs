@@ -9,7 +9,7 @@ namespace DB_Models.Framework
     public partial class Fixed_variable
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(20)]
         public string VariableName { get; set; }

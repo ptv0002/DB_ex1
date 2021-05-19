@@ -15,7 +15,7 @@ namespace DB_ex1.EditForms
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get good ID from Good Table and pass to the Edit form
-            gdId = Convert.ToInt32(Request.QueryString["id"].ToString());
+            gdId = Convert.ToInt32(Request.QueryString["Id"].ToString());
             if (!IsPostBack)
             {
                 BindControlValues(gdId);
@@ -64,7 +64,7 @@ namespace DB_ex1.EditForms
                 Good good = new Good();
 
                 // Get updated info and pass into an Good object before passing into GoodEmployee method
-                good.id = Convert.ToInt32(gId.Text);
+                good.Id = Convert.ToInt32(gId.Text);
                 good.GoodsName = goodsName.Text;
                 good.GoodsStatus = Convert.ToBoolean(ddStatus.SelectedValue);
                 good.GoodsCode = barcode.Text;

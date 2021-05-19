@@ -29,6 +29,18 @@ namespace DB_Models
             context.Database.ExecuteSqlCommand("Sp_ImportGoods_Insert @infoId, @goodsName, @price, @total, @qty", sqlParams);
 
         }
+        public void InsertImportGood(Import_Goods good, DB_ex1_Context con)
+        {
+            object[] sqlParams =
+            {
+                    new SqlParameter("@infoId", good.ImportInfoId),
+                    new SqlParameter("@goodsName", good.GoodsName),
+                    new SqlParameter("@qty", good.imQuantity),
+                    new SqlParameter("@price", good.Price),
+                    new SqlParameter("@total", good.TotalPrice)
+                };
+            con.Database.ExecuteSqlCommand("Sp_ImportGoods_Insert @infoId, @goodsName, @price, @total, @qty", sqlParams);
+        }
         public void InsertEmployee(Employee employee)
         {
             // Insert new employee into database

@@ -9,10 +9,10 @@
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:LinkButton ForeColor="#333333" runat="server" href='<%#"/EditForms/GoodEdit.aspx?id="+DataBinder.Eval(Container.DataItem,"id") %>'>Edit</asp:LinkButton>
+                    <asp:LinkButton ForeColor="#333333" runat="server" href='<%#"/EditForms/GoodEdit.aspx?Id="+DataBinder.Eval(Container.DataItem,"Id") %>'>Edit</asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
+            <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" />
             <asp:BoundField DataField="categoryName" HeaderText="Category" ReadOnly="True" />
             <asp:BoundField DataField="GoodsName" HeaderText="Name" ReadOnly="True" />
             <asp:BoundField DataField="GoodsStatus" HeaderText="Status" ReadOnly="True" />

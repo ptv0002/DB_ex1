@@ -19,7 +19,7 @@ namespace DB_Models
         {
             object[] sqlParams =
             {
-                new SqlParameter("@id", good.id),
+                new SqlParameter("@id", good.Id),
                 new SqlParameter("@goodsName", good.GoodsName),
                 new SqlParameter("@qty", good.imQuantity),
                 new SqlParameter("@price", good.Price),
@@ -27,12 +27,37 @@ namespace DB_Models
             };
             context.Database.ExecuteSqlCommand("Sp_ImportGoods_Update @id, @goodsName, @price, @total, @qty", sqlParams);
         }
+        public void UpdateImportGood(Import_Goods good, DB_ex1_Context con)
+        {
+            object[] sqlParams =
+            {
+                new SqlParameter("@id", good.Id),
+                new SqlParameter("@goodsName", good.GoodsName),
+                new SqlParameter("@qty", good.imQuantity),
+                new SqlParameter("@price", good.Price),
+                new SqlParameter("@total", good.TotalPrice)
+            };
+            con.Database.ExecuteSqlCommand("Sp_ImportGoods_Update @id, @goodsName, @price, @total, @qty", sqlParams);
+        }
+        public void UpdateImportInfo(Import_Info info, DB_ex1_Context con)
+        {
+            object[] sqlParams =
+            {
+                new SqlParameter("@id", info.Id),
+                new SqlParameter("@supplier", info.SupplierName),
+                new SqlParameter("@total", info.TotalImport),
+                new SqlParameter("@payStatus", Convert.ToByte(info.PaymentStatus)),
+                new SqlParameter("@payType", info.PaymentType),
+                new SqlParameter("@updateby", info.UpdateBy)
+            };
+            con.Database.ExecuteSqlCommand("Sp_ImportInfo_Update @id, @supplier, @total, @payStatus, @payType, @updateby", sqlParams);
+        }
         public void UpdateEmployee(Employee employee)
         {
             // Update info to database
             object[] sqlParams =
             {
-                new SqlParameter("@id", employee.id),
+                new SqlParameter("@id", employee.Id),
                 new SqlParameter("@status", Convert.ToByte(employee.EmployeeStatus)),
                 new SqlParameter("@first", employee.FirstName),
                 new SqlParameter("@last", employee.LastName),
@@ -49,7 +74,7 @@ namespace DB_Models
             // Update category into database
             object[] sqlParams =
             {                
-                new SqlParameter("@id", category.id),
+                new SqlParameter("@id", category.Id),
                 new SqlParameter("@name", category.CategoryName),
                 new SqlParameter("@status", Convert.ToByte(category.CategoryStatus)),
                 new SqlParameter("@updateby", category.UpdateBy)
@@ -61,7 +86,7 @@ namespace DB_Models
             // Update good into database
             object[] sqlParams =
             {
-                new SqlParameter("@id", good.id),
+                new SqlParameter("@id", good.Id),
                 new SqlParameter("@name", good.GoodsName),
                 new SqlParameter("@cat", good.categoryName),
                 new SqlParameter("@status", Convert.ToByte(good.GoodsStatus)),

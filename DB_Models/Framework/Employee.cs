@@ -17,7 +17,7 @@ namespace DB_Models.Framework
             Import_Info = new HashSet<Import_Info>();
         }
 
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(50)]
         public string FirstName { get; set; }

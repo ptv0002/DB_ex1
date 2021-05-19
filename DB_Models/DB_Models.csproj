@@ -73,7 +73,7 @@
     <Compile Include="Framework\Supplier.cs" />
     <Compile Include="ListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusModel.cs" />
+    <Compile Include="OtherModel.cs" />
     <Compile Include="UpdateModel.cs" />
   </ItemGroup>
   <ItemGroup>

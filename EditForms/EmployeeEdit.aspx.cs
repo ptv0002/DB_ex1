@@ -15,7 +15,7 @@ namespace DB_ex1.EditForms
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get employee ID from Employee Table and pass to the Edit form
-            emId = Convert.ToInt32(Request.QueryString["id"].ToString());
+            emId = Convert.ToInt32(Request.QueryString["Id"].ToString());
             if (!IsPostBack)
             {
                 BindControlValues(emId);
@@ -52,7 +52,7 @@ namespace DB_ex1.EditForms
                 Employee employee = new Employee();
 
                 // Get updated info and pass into an Employee object before passing into UpdateEmployee method
-                employee.id = Convert.ToInt32(eId.Text);
+                employee.Id = Convert.ToInt32(eId.Text);
                 employee.FirstName = firstName.Text;
                 employee.LastName = lastName.Text;
                 employee.Position = position.Text;

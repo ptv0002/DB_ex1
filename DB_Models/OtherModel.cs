@@ -1,23 +1,23 @@
 ﻿using DB_Models.Framework;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DB_Models
 {
-    public class DeleteModel
-    {
+    public class OtherModel
+    {   
         private DB_ex1_Context context = null;
-        public DeleteModel()
+        public OtherModel()
         {
             context = new DB_ex1_Context();
         }
-        public void DeleteImport(int id, DB_ex1_Context con)
+        public DbContextTransaction BeginTransaction()
         {
-            con.Database.ExecuteSqlCommand("Sp_ImportGoods_Delete @id", new SqlParameter("@id", id));
+            return context.Database.BeginTransaction();
         }
     }
 }

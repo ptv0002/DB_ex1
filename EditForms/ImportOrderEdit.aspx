@@ -36,7 +36,11 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell><asp:Label ID="totalImport" runat="server" ></asp:Label></asp:TableCell>
-            <asp:TableCell><asp:DropDownList ID="ddUpdateBy" runat="server" width="100%"></asp:DropDownList><asp:Label CssClass="small" runat="server" ID="ddError"></asp:Label></asp:TableCell>
+            <asp:TableCell><asp:DropDownList ID="ddUpdateBy" runat="server" width="100%"></asp:DropDownList></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell></asp:TableCell>
+            <asp:TableCell CssClass="small"><asp:Label runat="server" ID="ddError"></asp:Label></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
     <style>
@@ -44,12 +48,12 @@
             position:absolute;
         }
     </style>
-    <asp:GridView style="height:50px;overflow:auto" HeaderStyle-CssClass="fixedHeader" runat="server" ID="gv_importGoods" AutoGenerateColumns="False" CellPadding= "4" AllowPaging= "True" ForeColor= "#333333"  Width= "100%" OnRowEditing="OnRowEditing" ShowFooter="True" >
+    <asp:GridView style="height:50px;overflow:auto" HeaderStyle-CssClass="fixedHeader" runat="server" ID="gv_importGoods" AutoGenerateColumns="False" CellPadding= "4" AllowPaging= "True" ForeColor= "#333333"  Width= "100%" OnRowEditing="OnRowEditing" ShowFooter="True" OnRowDeleting="OnRowDeleting">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:LinkButton ForeColor = "#333333" runat= "server" Text="Edit" CommandName="Edit" />
-                    <asp:LinkButton ForeColor = "#333333" runat= "server" Text="Delete" OnClick="OnDelete" />
+                    <asp:LinkButton ForeColor = "#333333" runat= "server" Text="Delete" CommandName="Delete" />
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:LinkButton ForeColor = "#333333" Text="Update" runat="server" OnClick="OnUpdate" ValidationGroup ="update"/>
@@ -90,7 +94,19 @@
                     <asp:RequiredFieldValidator CssClass="small" runat="server" ValidationGroup="insert" ControlToValidate="qtyNew" ErrorMessage="Quanity is required" ForeColor="Red"/>
                 </FooterTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField = "Price" HeaderText= "Price" ReadOnly="true" />
+            <asp:TemplateField HeaderText="Price">
+                <EditItemTemplate>
+                    <asp:TextBox ID="price" runat="server" Text='<%# Bind("Price") %>' Width="100%"></asp:TextBox>
+                    <asp:RequiredFieldValidator CssClass="small" runat="server" ValidationGroup="update" ControlToValidate="price" ErrorMessage="Price is required" ForeColor="Red"/>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Price") %>'></asp:Label>
+                </ItemTemplate>
+                <FooterTemplate>
+                    <asp:TextBox ID="priceNew" runat="server" Text='<%# Bind("Price") %>'  Width="100%"></asp:TextBox>
+                    <asp:RequiredFieldValidator CssClass="small" runat="server" ValidationGroup="insert" ControlToValidate="priceNew" ErrorMessage="Price is required" ForeColor="Red"/>
+                </FooterTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField = "TotalPrice" HeaderText= "Total Price" ReadOnly="true"/>
         </Columns>
         <HeaderStyle BackColor= "#135857" Font-Bold= "True" ForeColor= "White" />
@@ -100,6 +116,9 @@
         <RowStyle BackColor= "#9fe9dd" />
         <AlternatingRowStyle BackColor = "White" />
     </asp:GridView>
-    <asp:Label BorderWidth="3" BorderColor="Transparent" runat="server"></asp:Label><asp:Button class= "btn btn-primary" ID="SaveButton" Text="Save" onClick="btnSave_Click" runat="server" ValidationGroup="info"/>
-    <a class= "btn btn-secondary" href="/Management/ImportManagement.aspx">Cancel</a> </asp:Content><asp:Content ID="Content3" ContentPlaceHolderID="cpScript" runat="server">
+    <asp:Label BorderWidth="3" BorderColor="Transparent" runat="server"></asp:Label>
+    <asp:Button class= "btn btn-primary" ID="SaveButton" Text="Save" onClick="btnSave_Click" runat="server" ValidationGroup="info"/>
+    <asp:Button class= "btn btn-secondary" ID="CancelButton" Text="Cancel" onClick="btnCancel_Click" runat="server" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cpScript" runat="server">
 </asp:Content>

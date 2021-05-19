@@ -10,7 +10,7 @@ namespace DB_Models.Framework
     public partial class Export_Goods
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(50)]
         public string GoodsName { get; set; }

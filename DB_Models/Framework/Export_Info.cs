@@ -14,7 +14,7 @@ namespace DB_Models.Framework
         }
 
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public string CustomerFullName { get; set; }
 

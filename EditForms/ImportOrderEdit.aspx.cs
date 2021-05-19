@@ -7,25 +7,32 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Data.Entity;
 
 namespace DB_ex1.EditForms
 {
     public partial class ImportOrderEdit : System.Web.UI.Page
     {
-        private int imInfoId = 0;
+        private static int imInfoId;
+        static DB_ex1_Context context = new DB_ex1_Context();
+        static DbContextTransaction transaction;
+        private static int load;
+
+        static ListModel model = new ListModel();
+        static List<Import_Goods> lstImportGoods;
+        static List<Import_Info> lstImportInfo;
         protected void Page_Load(object sender, EventArgs e)
         {
-            imInfoId = Convert.ToInt32(Request.QueryString["id"].ToString());
-            
-            
-            // Use Session for temporary saves
-            ListModel model = new ListModel();
-            List<Import_Goods> lstImportGoods = model.ListImportGoods(imInfoId);
-            
-            Session["CurrentGoods"] = lstImportGoods;
+            imInfoId = Convert.ToInt32(Request.QueryString["Id"].ToString());
 
-            List<Import_Info> lstImportInfo = model.ListSingle_ImportInfo(imInfoId);
-            Session["CurrentInfo"] = lstImportInfo;
+            if (load == 0)
+            {
+                transaction = context.Database.BeginTransaction();
+                load++;
+            }
+
+            lstImportGoods = model.ListImportGoods(imInfoId, context);
+            lstImportInfo = model.ListSingle_ImportInfo(imInfoId, context);
 
             if (!IsPostBack)
             {
@@ -36,7 +43,7 @@ namespace DB_ex1.EditForms
         }
         protected void LoadDropdownGood(DropDownList dd, string selected)
         {
-            ListModel model = new ListModel();
+            //ListModel model = new ListModel();
             List<Good> list = model.ListAll_Goods();
             if (list != null)
             {
@@ -51,14 +58,14 @@ namespace DB_ex1.EditForms
         protected void BindImportInfo(List<Import_Info> list)
         {
             // Load other info in the ImportInfo portion
-            IoId.Text = list.ElementAt(0).id.ToString();
+            IoId.Text = list.ElementAt(0).Id.ToString();
             totalImport.Text = list.ElementAt(0).TotalImport.ToString();
             paymentType.Text = list.ElementAt(0).PaymentType;
 
             BindStatus(ddPaymentStatus, "Fully paid", "Not paid", list.ElementAt(0).PaymentStatus);
 
             // Load Supplier's name to dropdown
-            ListModel model = new ListModel();
+            //ListModel model = new ListModel();
             List<Supplier> lstSupplier = model.ListAll_Supplier();
             if (lstSupplier != null)
             {
@@ -74,6 +81,15 @@ namespace DB_ex1.EditForms
                 ddUpdateBy.DataSource = lstEmployee;
                 ddUpdateBy.DataTextField = "FullName";
                 ddUpdateBy.DataBind();
+                if (list.ElementAt(0).UpdateBy == "")
+                {
+                    ddUpdateBy.Items.Insert(0, new ListItem("-Select-", "0"));
+                }
+                else
+                {
+                    ddUpdateBy.Items.Insert(0, new ListItem(list.ElementAt(0).UpdateBy, "0"));
+                }
+
             }
         }
         public void BindStatus(DropDownList dd, string trueText, string falseText, bool status)
@@ -117,20 +133,29 @@ namespace DB_ex1.EditForms
         }
         public void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
-
-            // ------------Error: Kept reloading data from database, not from previous state------------
             gv_importGoods.EditIndex = e.NewEditIndex;
-            // Convert Session back to list and Bind Goods' info
             
-            List<Import_Goods> list = (List<Import_Goods>) (Session["CurrentGoods"]);
-            BindGoods(list); // Bind Goods list first so that FindControl() could work
+            BindGoods(lstImportGoods); // Bind Goods list first so that FindControl() could work
 
             // Load goods into DropDownList on selected row
             DropDownList dd = gv_importGoods.Rows[gv_importGoods.EditIndex].FindControl("ddGoods") as DropDownList;
-            string selected = list.ElementAt(gv_importGoods.EditIndex).GoodsName;
+            string selected = lstImportGoods.ElementAt(gv_importGoods.EditIndex).GoodsName;
             LoadDropdownGood(dd, selected);
             BindFooterRow(); // Rebind footer row
+        }
+        public void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int rowId = e.RowIndex; // index start with 0
+            // Save new info database and listGoods
             
+            int deleteId = lstImportGoods.ElementAt(rowId).Id;
+
+            lstImportGoods.RemoveAt(rowId);
+
+            DeleteModel deleteModel = new DeleteModel();
+            deleteModel.DeleteImport(deleteId, context);
+            UpdateInfo(lstImportGoods);
+
         }
         public void OnUpdate(object sender, EventArgs e)
         {
@@ -138,22 +163,25 @@ namespace DB_ex1.EditForms
             GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
             DropDownList dd = (DropDownList)row.FindControl("ddGoods");
             string name = dd.SelectedItem.Text;
+
             TextBox text = row.FindControl("qty") as TextBox;
             int qty = Convert.ToInt32(text.Text);
-            int rowId = row.RowIndex;
-            // Get info from temporary table
-            List<Import_Goods> listGoods = (List<Import_Goods>)(Session["CurrentGoods"]);
 
-            listGoods.ElementAt(rowId).GoodsName = name;
-            listGoods.ElementAt(rowId).imQuantity = qty;
+            TextBox text2 = row.FindControl("price") as TextBox;
+            double price = Convert.ToDouble(text2.Text);
+
+            int rowId = row.RowIndex;
+
+            lstImportGoods.ElementAt(rowId).GoodsName = name;
+            lstImportGoods.ElementAt(rowId).imQuantity = qty;
 
             // Derive other elements from updated elements
             ListModel listModel = new ListModel();
-            List<Good> good = listModel.ListSingle_Good(null,name);
+            List<Good> good = listModel.ListSingle_Good(0,name);
 
-            listGoods.ElementAt(rowId).Barcode = good.ElementAt(0).GoodsCode;
-            listGoods.ElementAt(rowId).Price = (double)good.ElementAt(0).SalePrice;
-            listGoods.ElementAt(rowId).TotalPrice = (double)(qty * good.ElementAt(0).SalePrice);
+            lstImportGoods.ElementAt(rowId).Barcode = good.ElementAt(0).GoodsCode;
+            lstImportGoods.ElementAt(rowId).Price = price;
+            lstImportGoods.ElementAt(rowId).TotalPrice = (double)(qty * price);
 
             Import_Goods imGood = new Import_Goods
             {
@@ -161,20 +189,18 @@ namespace DB_ex1.EditForms
                 imQuantity = qty,
 
                 // Derive other elements from updated elements
-                id = rowId + 1,
-                Price = (double) good.ElementAt(0).SalePrice,
-                TotalPrice = (double)(qty * good.ElementAt(0).SalePrice),
+                Id = rowId + 1,
+                Price = price,
+                TotalPrice = (double)(qty * price),
             };
-            // Save edited good the DB
+            
+            
+            // Save edited good to the Transaction DB
             UpdateModel updateModel = new UpdateModel();
-            updateModel.UpdateImportGood(imGood);
-
-            // Update back to the temporary Session list
-            Session.Remove("CurrentGoods");
-            Session["CurrentGoods"] = listGoods;
+            updateModel.UpdateImportGood(imGood,context);
 
             // -----Done with goods list, below is update of Import info-----
-            UpdateInfo(listGoods);
+            UpdateInfo(lstImportGoods);
             
         }
         public void OnAdd(object sender, EventArgs e)
@@ -182,62 +208,78 @@ namespace DB_ex1.EditForms
             // Get info from footer
             DropDownList dd = gv_importGoods.FooterRow.FindControl("ddGoodsNew") as DropDownList;
             string name = dd.SelectedItem.Text;
-            TextBox text = gv_importGoods.FooterRow.FindControl("qtyNew") as TextBox;
-            int qty = Convert.ToInt32(text.Text);
-
-            List<Import_Goods> listGoods = (List<Import_Goods>)Session["CurrentGoods"];
-
-            // Get updated elements and put back in the Session list            
-            ListModel listModel = new ListModel();
-            List<Good> good = listModel.ListSingle_Good(null,name);
-            Import_Goods imGood = new Import_Goods
+            if (name != "-Select-")
             {
-                GoodsName = name,
-                imQuantity = qty,
+                TextBox text = gv_importGoods.FooterRow.FindControl("qtyNew") as TextBox;
+                int qty = Convert.ToInt32(text.Text);
 
-                // Derive other elements from updated elements
-                id = listGoods.Count() + 1,
-                Barcode = good.ElementAt(0).GoodsCode,
-                Price = (double)good.ElementAt(0).SalePrice,
-                TotalPrice = (double)(qty * good.ElementAt(0).SalePrice),
-                ImportInfoId = imInfoId
-            };
+                TextBox text2 = gv_importGoods.FooterRow.FindControl("priceNew") as TextBox;
+                double price = Convert.ToDouble(text2.Text);
 
-            // Save new info database and listGoods
-            InsertModel insertModel = new InsertModel();
-            insertModel.InsertImportGood(imGood);
-            listGoods.Add(imGood);
+                List<Good> good = model.ListSingle_Good(0, name);
+                Import_Goods imGood = new Import_Goods
+                {
+                    GoodsName = name,
+                    imQuantity = qty,
 
-            // Update back to the temporary Session list
-            Session.Remove("CurrentGoods");
-            Session["CurrentGoods"] = listGoods;
+                    // Derive other elements from updated elements
+                    Id = lstImportGoods.Count() + 1,
+                    Barcode = good.ElementAt(0).GoodsCode,
+                    Price = price,
+                    TotalPrice = (double)(qty * price),
+                    ImportInfoId = imInfoId
+                };
 
+                // Save new info database and listGoods
+                InsertModel insertModel = new InsertModel();
+                insertModel.InsertImportGood(imGood,context);
+                lstImportGoods.Add(imGood);
 
-            // -----Done with goods list, below is update of Import info-----
-            UpdateInfo(listGoods);
+                // -----Done with goods list, below is update of Import info-----
+                UpdateInfo(lstImportGoods);
+            }
+            else
+            {
+                Label label = gv_importGoods.FooterRow.FindControl("ddNewErr") as Label;
+                label.Text = "This field is required";
+                label.ForeColor = System.Drawing.Color.Red;
+            }
         }
         public void OnCancel(object sender, EventArgs e)
         {
-            List<Import_Goods> listGoods = (List<Import_Goods>)Session["CurrentGoods"];
+            //List<Import_Goods> listGoods = (List<Import_Goods>)Session["CurrentGoods"];
 
             gv_importGoods.EditIndex = -1;
-            BindGoods(listGoods);
+            BindGoods(lstImportGoods);
             BindFooterRow(); // Rebind footer row
-        }
-        public void OnDelete(object sender, EventArgs e)
-        {
-
         }
         public void btnSave_Click(object sender, EventArgs e)
         {
-            List<Import_Goods> listGoods = (List<Import_Goods>)Session["CurrentGoods"];
-            UpdateInfo(listGoods);
+            if (ddUpdateBy.SelectedItem.Text != "-Select-")
+            {
+                context.SaveChanges();
+                if (transaction.UnderlyingTransaction.Connection != null)
+                {
+                    transaction.Commit();
+                }
+                Response.Redirect("/Management/ImportManagement.aspx");
+            }
+            else
+            {
+                ddError.Text = "This field is required";
+                ddError.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+        public void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (transaction.UnderlyingTransaction.Connection != null)
+            {
+                transaction.Dispose();
+            }
             Response.Redirect("/Management/ImportManagement.aspx");
         }
         public void UpdateInfo(List<Import_Goods> listGoods)
         {
-            List<Import_Info> listInfo = (List<Import_Info>)(Session["CurrentInfo"]);
-
             // Use for loop to calculate total price from all the goods in the list
             double sum = 0;
             for (int i = 0; i < listGoods.Count(); i++)
@@ -245,22 +287,38 @@ namespace DB_ex1.EditForms
                 sum += (double)listGoods.ElementAt(i).TotalPrice;
             }
             // Update total amount import
-            listInfo.ElementAt(0).TotalImport = sum;
+            lstImportInfo.ElementAt(0).TotalImport = sum;
 
             // Update other info in Import_Info portion
-            listInfo.ElementAt(0).PaymentType = paymentType.Text;
-            listInfo.ElementAt(0).PaymentStatus = Convert.ToBoolean(ddPaymentStatus.SelectedValue);
-            listInfo.ElementAt(0).SupplierName = ddSupplier.SelectedItem.Text;
-            listInfo.ElementAt(0).UpdateBy = ddUpdateBy.SelectedItem.Text;
-            // Update back to the temporary Session list
-            Session.Remove("CurrentInfo");
-            Session["CurrentInfo"] = listInfo;
-            // Update to DB
+            lstImportInfo.ElementAt(0).PaymentType = paymentType.Text;
+            lstImportInfo.ElementAt(0).PaymentStatus = Convert.ToBoolean(ddPaymentStatus.SelectedValue);
+            lstImportInfo.ElementAt(0).SupplierName = ddSupplier.SelectedItem.Text;
+            if (ddUpdateBy.SelectedItem.Text != "-Select-")
+            {
+                lstImportInfo.ElementAt(0).UpdateBy = ddUpdateBy.SelectedItem.Text;
+            }
+            else
+            {
+                lstImportInfo.ElementAt(0).UpdateBy = "";
+            }
 
+            // Update to Transaction DB
+            Import_Info info = new Import_Info
+            {
+                Id = imInfoId,
+                SupplierName = ddSupplier.SelectedItem.Text,
+                PaymentType = paymentType.Text,
+                PaymentStatus = Convert.ToBoolean(ddPaymentStatus.SelectedValue),
+                TotalImport = sum,
+                UpdateBy = lstImportInfo.ElementAt(0).UpdateBy
+            };
+
+            UpdateModel model = new UpdateModel();
+            model.UpdateImportInfo(info, context);
 
             // Bind all the info and return the pointer
             gv_importGoods.EditIndex = -1;
-            BindImportInfo(listInfo);
+            BindImportInfo(lstImportInfo);
             BindGoods(listGoods);
             BindFooterRow();
         }

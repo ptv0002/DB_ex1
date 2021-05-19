@@ -76,15 +76,15 @@ namespace DB_Models
             var list = context.Database.SqlQuery<Import_Info>("Sp_ImportInfo_ListAll").ToList();
             return list;
         }
-        public List<Import_Info> ListSingle_ImportInfo(int importInfoId)
+        public List<Import_Info> ListSingle_ImportInfo(int importInfoId, DB_ex1_Context con)
         {
-            var info = context.Database.SqlQuery<Import_Info>("Sp_ImportInfo_ListImportInfo @id", new SqlParameter("@id", importInfoId)).ToList();
+            var info = con.Database.SqlQuery<Import_Info>("Sp_ImportInfo_ListImportInfo @id", new SqlParameter("@id", importInfoId)).ToList();
             return info;
         }
         // ------------------- Import Goods -------------------
-        public List<Import_Goods> ListImportGoods(int importInfoId)
+        public List<Import_Goods> ListImportGoods(int importInfoId, DB_ex1_Context con)
         {
-            var importGoods = context.Database.SqlQuery<Import_Goods>("Sp_ImportGoods_ListImportGoods @infoId", new SqlParameter("@infoId", importInfoId)).ToList();
+            var importGoods = con.Database.SqlQuery<Import_Goods>("Sp_ImportGoods_ListImportGoods @infoId", new SqlParameter("@infoId", importInfoId)).ToList();
             return importGoods;
         }
     }

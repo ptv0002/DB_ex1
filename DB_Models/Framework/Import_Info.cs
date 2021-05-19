@@ -15,7 +15,7 @@ namespace DB_Models.Framework
         }
 
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         
         [StringLength(50)]
         public string SupplierName { get; set; }

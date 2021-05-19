@@ -14,7 +14,7 @@ namespace DB_Models.Framework
             Customers = new HashSet<Customer>();
         }
 
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Column("CardType")]
         [StringLength(10)]
