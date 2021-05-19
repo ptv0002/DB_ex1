@@ -9,21 +9,21 @@ namespace DB_Models.Framework
     public partial class Fixed_variable
     {
         [Key]
-        public int variableId { get; set; }
+        public int id { get; set; }
 
         [StringLength(20)]
         public string VariableName { get; set; }
 
-        public float? VariableValue { get; set; }
+        public float VariableValue { get; set; }
 
-        public bool? VariableStatus { get; set; }
+        public bool VariableStatus { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
 
-        public DateTime? UpdateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
 
         [StringLength(50)]
         public string UpdateBy { get; set; }

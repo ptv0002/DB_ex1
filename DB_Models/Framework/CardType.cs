@@ -9,25 +9,24 @@ namespace DB_Models.Framework
     [Table("CardType")]
     public partial class CardType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CardType()
         {
             Customers = new HashSet<Customer>();
         }
 
-        public int cardTypeId { get; set; }
+        public int id { get; set; }
 
         [Column("CardType")]
         [StringLength(10)]
         public string CardType1 { get; set; }
 
-        public int? PercentDiscount { get; set; }
+        public int PercentDiscount { get; set; }
 
-        public double? DecreaseBy { get; set; }
+        public double DecreaseBy { get; set; }
 
-        public int? LowerBound { get; set; }
+        public int LowerBound { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
@@ -37,7 +36,6 @@ namespace DB_Models.Framework
         [StringLength(50)]
         public string UpdateBy { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
     }
 }

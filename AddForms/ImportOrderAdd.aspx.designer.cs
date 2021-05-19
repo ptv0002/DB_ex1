@@ -7,57 +7,75 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DB_ex1.Forms
+namespace DB_ex1.AddForms
 {
 
 
-    public partial class EmployeeEdit
+    public partial class ImportOrderAdd
     {
 
         /// <summary>
-        /// eId control.
+        /// importInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label eId;
+        protected global::System.Web.UI.WebControls.Table importInfo;
 
         /// <summary>
-        /// firstName control.
+        /// ddSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox firstName;
+        protected global::System.Web.UI.WebControls.DropDownList ddSupplier;
 
         /// <summary>
-        /// lastName control.
+        /// ddEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lastName;
+        protected global::System.Web.UI.WebControls.DropDownList ddEmployee;
 
         /// <summary>
-        /// phoneNumber control.
+        /// ddPaymentStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox phoneNumber;
+        protected global::System.Web.UI.WebControls.DropDownList ddPaymentStatus;
 
         /// <summary>
-        /// employeeAddress control.
+        /// paymentType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox employeeAddress;
+        protected global::System.Web.UI.WebControls.TextBox paymentType;
+
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
+        /// totalImport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label totalImport;
 
         /// <summary>
         /// updateBy control.
@@ -69,15 +87,6 @@ namespace DB_ex1.Forms
         protected global::System.Web.UI.WebControls.TextBox updateBy;
 
         /// <summary>
-        /// status control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox status;
-
-        /// <summary>
         /// RequiredFieldValidator6 control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace DB_ex1.Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+
+        /// <summary>
+        /// gv_importGoods control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_importGoods;
 
         /// <summary>
         /// SaveButton control.

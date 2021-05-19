@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DB_ex1
+namespace DB_ex1.Management
 {
     public partial class EmployeeManagement : System.Web.UI.Page
     {
@@ -21,11 +21,11 @@ namespace DB_ex1
 
         protected void LoadGridEmployee()
         {
-            EmployeeModel employeeModel = new EmployeeModel();
-            List<Employee> lstEmployee = employeeModel.ListAll();
-            if(lstEmployee != null)
+            ListModel model = new ListModel();
+            List<Employee> list = model.ListAll_Employee();
+            if(list != null)
             {
-                gvEmployee.DataSource = lstEmployee;
+                gvEmployee.DataSource = list;
                 gvEmployee.DataBind();
             }
         }

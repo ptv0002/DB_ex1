@@ -20,28 +20,15 @@
         $("body").toggleClass("sb-sidenav-toggled");
     });
 
-    //// Set up pagination for tables
-    //var items = $("table tbody tr")
-    //var numItems = items.length;
-    //var perPage = $("#perPage").select;
-    //// Only show the first 2 (or first `per_page`) items initially.
-    //items.slice(perPage).hide();
-
-    //// Now setup the pagination using the `.pagination-page` div.
-    //$(".pagination").pagination({
-    //    items: numItems,
-    //    itemsOnPage: perPage,
-        
-    //    // This is the actual page changing functionality.
-    //    onPageClick: function (pageNumber) {
-    //        // We need to show and hide `tr`s appropriately.
-    //        var showFrom = perPage * (pageNumber - 1);
-    //        var showTo = showFrom + perPage;
-
-    //        // We'll first hide everything...
-    //        items.hide()
-    //            // ... and then only show the appropriate rows.
-    //            .slice(showFrom, showTo).show();
-    //    }
-    //});
+    function ShowPopup() {
+        $('modal').show();
+        $('#<%=pnlpopup.ClientID %>').show();
+    }
+    function HidePopup() {
+        $('modal').hide();
+        $('#<%=pnlpopup.ClientID %>').hide();
+    }
+    $(".btnClose").live('click', function () {
+        HidePopup();
+    });
 })(jQuery);

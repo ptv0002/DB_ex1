@@ -7,21 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DB_ex1.Forms
+namespace DB_ex1.AddForms
 {
 
 
     public partial class EmployeeAdd
     {
-
-        /// <summary>
-        /// LoginError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoginError;
 
         /// <summary>
         /// firstName control.
@@ -42,22 +33,22 @@ namespace DB_ex1.Forms
         protected global::System.Web.UI.WebControls.TextBox lastName;
 
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// position control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.TextBox position;
 
         /// <summary>
-        /// RequiredFieldValidator7 control.
+        /// code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        protected global::System.Web.UI.WebControls.TextBox code;
 
         /// <summary>
         /// phoneNumber control.
@@ -78,40 +69,22 @@ namespace DB_ex1.Forms
         protected global::System.Web.UI.WebControls.TextBox employeeAddress;
 
         /// <summary>
-        /// RequiredFieldValidator5 control.
+        /// ddCreateBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
 
         /// <summary>
-        /// RequiredFieldValidator8 control.
+        /// ddError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
-
-        /// <summary>
-        /// createBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox createBy;
-
-        /// <summary>
-        /// RequiredFieldValidator6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.Label ddError;
 
         /// <summary>
         /// SaveButton control.

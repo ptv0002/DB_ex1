@@ -1,4 +1,5 @@
 ﻿using DB_Models;
+using DB_Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DB_ex1
+namespace DB_ex1.Login
 {
     public partial class Register : System.Web.UI.Page
     {
@@ -27,6 +28,15 @@ namespace DB_ex1
             }
             else
             {
+                // Save new account info to the database
+                var newAcc = new Account();
+                newAcc.FirstName = firstName.Text;
+                newAcc.LastName = lastName.Text;
+                newAcc.Username = username.Text;
+                newAcc.Email = email.Text;
+                newAcc.AccPassword = password.Text;
+                accountModel.InsertAccount(newAcc);
+                // Redirect user to the login page after saving new account info
                 Response.Redirect("Login.aspx");
             }
         }

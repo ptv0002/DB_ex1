@@ -8,29 +8,26 @@ namespace DB_Models.Framework
 
     public partial class Export_Info
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Export_Info()
         {
-            InOut_Goods = new HashSet<InOut_Goods>();
+            InOut_Goods = new HashSet<Import_Goods>();
         }
 
         [Key]
-        public int exportInfoId { get; set; }
+        public int id { get; set; }
 
-        public int? CustomerId { get; set; }
+        public string CustomerFullName { get; set; }
 
-        public int? EmployeeId { get; set; }
+        public double TransactionScore { get; set; }
 
-        public double? TransactionScore { get; set; }
+        public double TotalExport { get; set; }
 
-        public double? TotalExport { get; set; }
-
-        public bool? PaymentStatus { get; set; }
+        public bool PaymentStatus { get; set; }
 
         [StringLength(50)]
         public string PaymentType { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
@@ -44,7 +41,6 @@ namespace DB_Models.Framework
 
         public virtual Employee Employee { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InOut_Goods> InOut_Goods { get; set; }
+        public virtual ICollection<Import_Goods> InOut_Goods { get; set; }
     }
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,22 +56,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
-    <Compile Include="CategoryModel.cs" />
+    <Compile Include="InsertModel.cs" />
+    <Compile Include="DeleteModel.cs" />
     <Compile Include="Framework\Account.cs" />
     <Compile Include="Framework\CardType.cs" />
     <Compile Include="Framework\Customer.cs" />
     <Compile Include="Framework\DB_ex1_Context.cs" />
     <Compile Include="Framework\Employee.cs" />
+    <Compile Include="Framework\Export_Goods.cs" />
     <Compile Include="Framework\Export_Info.cs" />
     <Compile Include="Framework\Fixed_variable.cs" />
     <Compile Include="Framework\Good.cs" />
-    <Compile Include="EmployeeModel.cs" />
     <Compile Include="Framework\Category.cs" />
     <Compile Include="Framework\Import_Info.cs" />
-    <Compile Include="Framework\InOut_Goods.cs" />
+    <Compile Include="Framework\Import_Goods.cs" />
     <Compile Include="Framework\Supplier.cs" />
-    <Compile Include="GoodModel.cs" />
+    <Compile Include="ListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusModel.cs" />
+    <Compile Include="UpdateModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App.config" />

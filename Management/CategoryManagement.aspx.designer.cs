@@ -7,119 +7,110 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DB_ex1.Forms
+namespace DB_ex1.Management
 {
 
 
-    public partial class GoodEdit
+    public partial class CategoryManagement
     {
 
         /// <summary>
-        /// gId control.
+        /// gvCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label gId;
+        protected global::System.Web.UI.WebControls.GridView gvCategory;
 
         /// <summary>
-        /// goodsName control.
+        /// addCatName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox goodsName;
+        protected global::System.Web.UI.WebControls.TextBox addCatName;
 
         /// <summary>
-        /// ddCategory control.
+        /// ddCreateBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
 
         /// <summary>
-        /// barcode control.
+        /// ddCreateError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox barcode;
+        protected global::System.Web.UI.WebControls.Label ddCreateError;
 
         /// <summary>
-        /// importPrice control.
+        /// AddSaveButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox importPrice;
+        protected global::System.Web.UI.WebControls.Button AddSaveButton;
 
         /// <summary>
-        /// minQty control.
+        /// cId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox minQty;
+        protected global::System.Web.UI.WebControls.Label cId;
 
         /// <summary>
-        /// Qty control.
+        /// editCatName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Qty;
+        protected global::System.Web.UI.WebControls.TextBox editCatName;
 
         /// <summary>
-        /// tax control.
+        /// ddStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tax;
+        protected global::System.Web.UI.WebControls.DropDownList ddStatus;
 
         /// <summary>
-        /// status control.
+        /// ddUpdateBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox status;
+        protected global::System.Web.UI.WebControls.DropDownList ddUpdateBy;
 
         /// <summary>
-        /// updateBy control.
+        /// ddUpdateError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox updateBy;
+        protected global::System.Web.UI.WebControls.Label ddUpdateError;
 
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// EditSaveButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-
-        /// <summary>
-        /// SaveButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveButton;
+        protected global::System.Web.UI.WebControls.Button EditSaveButton;
     }
 }

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DB_ex1 {
-    
-    
-    public partial class EmployeeManagement {
-        
+namespace DB_ex1.Management
+{
+
+
+    public partial class EmployeeManagement
+    {
+
         /// <summary>
         /// gvEmployee control.
         /// </summary>

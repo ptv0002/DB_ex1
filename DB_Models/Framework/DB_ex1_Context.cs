@@ -21,7 +21,7 @@ namespace DB_Models.Framework
         public virtual DbSet<Good> Goods { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Import_Info> Import_Info { get; set; }
-        public virtual DbSet<InOut_Goods> InOut_Goods { get; set; }
+        public virtual DbSet<Import_Goods> InOut_Goods { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

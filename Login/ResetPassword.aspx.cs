@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DB_ex1
+namespace DB_ex1.Login
 {
     public partial class ResetPassword : System.Web.UI.Page
     {
@@ -14,20 +14,10 @@ namespace DB_ex1
         {
 
         }
-        protected void btnResetPw_Click(object sender, EventArgs e)
+
+        protected void btnReset_Click(object sender, EventArgs e)
         {
-            // Check if email has been registered, if not, reset password fails
-            AccountModel accountModel = new AccountModel();
-            var res = accountModel.CheckEmail(email.Text);
-            if (res)
-            {
-                Response.Redirect("Login.aspx");
-            }
-            else
-            {
-                LoginError.Text = "Your email is not registered. Please create new an account.";
-                LoginError.ForeColor = System.Drawing.Color.Red;
-            }
+
         }
     }
 }

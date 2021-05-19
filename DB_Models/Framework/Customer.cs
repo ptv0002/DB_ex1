@@ -7,15 +7,15 @@ namespace DB_Models.Framework
     using System.Data.Entity.Spatial;
 
     [Table("Customer")]
+    [Serializable]
     public partial class Customer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
             Export_Info = new HashSet<Export_Info>();
         }
 
-        public int customerId { get; set; }
+        public int id { get; set; }
 
         [StringLength(50)]
         public string FirstName { get; set; }
@@ -32,11 +32,11 @@ namespace DB_Models.Framework
         [StringLength(20)]
         public string CitizenId { get; set; }
 
-        public double? MembershipScore { get; set; }
+        public double MembershipScore { get; set; }
 
-        public int? CardTypeId { get; set; }
+        public int CardTypeId { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
@@ -48,7 +48,6 @@ namespace DB_Models.Framework
 
         public virtual CardType CardType { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Export_Info> Export_Info { get; set; }
     }
 }

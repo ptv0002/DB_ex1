@@ -1,17 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="GoodManagement.aspx.cs" Inherits="DB_ex1.GoodManagement" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="GoodManagement.aspx.cs" Inherits="DB_ex1.Management.GoodManagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
-        <asp:Label Font-Bold="true" ForeColor="Black" Font-Size="XX-Large" runat="server" BorderWidth="10" BorderColor="lightseagreen">Goods</asp:Label>
+    <asp:Label Font-Bold="true" ForeColor="Black" Font-Size="XX-Large" runat="server" BorderWidth="10" BorderColor="Transparent">Goods</asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    <asp:LinkButton runat="server" ForeColor="#333333" BorderWidth="10" BorderColor="lightseagreen" href="/Forms/GoodAdd.aspx">Add</asp:LinkButton>
+    <asp:LinkButton runat="server" ForeColor="#333333" BorderWidth="10" BorderColor="Transparent" href="/AddForms/GoodAdd.aspx">Add</asp:LinkButton>
     <asp:GridView ID="gvGood" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
+        <AlternatingRowStyle BackColor ="White" />
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:LinkButton ForeColor="#333333" runat="server" href='<%#"/Forms/GoodEdit.aspx?goodsId="+DataBinder.Eval(Container.DataItem,"goodsId") %>'>Edit</asp:LinkButton>
+                    <asp:LinkButton ForeColor="#333333" runat="server" href='<%#"/EditForms/GoodEdit.aspx?id="+DataBinder.Eval(Container.DataItem,"id") %>'>Edit</asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="goodsId" HeaderText="ID" ReadOnly="True" />
+            <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
             <asp:BoundField DataField="categoryName" HeaderText="Category" ReadOnly="True" />
             <asp:BoundField DataField="GoodsName" HeaderText="Name" ReadOnly="True" />
             <asp:BoundField DataField="GoodsStatus" HeaderText="Status" ReadOnly="True" />
@@ -28,7 +29,7 @@
         </Columns>
         <HeaderStyle BackColor="#135857" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#135857" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#e6f2f2" />
+        <RowStyle BackColor="#9fe9dd" />
     </asp:GridView>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpScript" runat="server">

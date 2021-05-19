@@ -6,16 +6,18 @@ namespace DB_Models.Framework
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Serializable]
     public partial class Good
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Good()
         {
-            InOut_Goods = new HashSet<InOut_Goods>();
+            Import_Goods = new HashSet<Import_Goods>();
+            Export_Goods = new HashSet<Export_Goods>();
         }
 
         [Key]
-        public int goodsId { get; set; }
+        public int id { get; set; }
         [StringLength(50)]
         public string categoryName { get; set; }
 
@@ -23,22 +25,22 @@ namespace DB_Models.Framework
         [Required]
         public string GoodsName { get; set; }
 
-        public bool? GoodsStatus { get; set; }
+        public bool GoodsStatus { get; set; }
 
         [StringLength(20)]
         public string GoodsCode { get; set; }
 
-        public int? MinQuantity { get; set; }
+        public int MinQuantity { get; set; }
 
-        public int? GoodsQuantity { get; set; }
+        public int GoodsQuantity { get; set; }
 
-        public double? ImportPrice { get; set; }
+        public double ImportPrice { get; set; }
 
         public double? SalePrice { get; set; }
 
-        public int? TaxPercent { get; set; }
+        public double TaxPercent { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
@@ -50,7 +52,7 @@ namespace DB_Models.Framework
 
         public virtual Category Category { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InOut_Goods> InOut_Goods { get; set; }
+        public virtual ICollection<Import_Goods> Import_Goods { get; set; }
+        public virtual ICollection<Export_Goods> Export_Goods { get; set; }
     }
 }

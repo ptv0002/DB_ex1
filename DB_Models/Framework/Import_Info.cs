@@ -6,29 +6,28 @@ namespace DB_Models.Framework
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Serializable]
     public partial class Import_Info
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Import_Info()
         {
-            InOut_Goods = new HashSet<InOut_Goods>();
+            Import_Goods = new HashSet<Import_Goods>();
         }
 
         [Key]
-        public int importInfoId { get; set; }
+        public int id { get; set; }
+        
+        [StringLength(50)]
+        public string SupplierName { get; set; }
 
-        public int? SupplierId { get; set; }
+        public double TotalImport { get; set; }
 
-        public int? EmployeeId { get; set; }
-
-        public double? TotalImport { get; set; }
-
-        public bool? PaymentStatus { get; set; }
+        public bool PaymentStatus { get; set; }
 
         [StringLength(50)]
         public string PaymentType { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
@@ -42,7 +41,6 @@ namespace DB_Models.Framework
 
         public virtual Supplier Supplier { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InOut_Goods> InOut_Goods { get; set; }
+        public virtual ICollection<Import_Goods> Import_Goods { get; set; }
     }
 }

@@ -7,9 +7,9 @@ namespace DB_Models.Framework
     using System.Data.Entity.Spatial;
 
     [Table("Employee")]
+    [Serializable]
     public partial class Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
             Accounts = new HashSet<Account>();
@@ -17,23 +17,28 @@ namespace DB_Models.Framework
             Import_Info = new HashSet<Import_Info>();
         }
 
-        public int employeeId { get; set; }
+        public int id { get; set; }
 
         [StringLength(50)]
         public string FirstName { get; set; }
 
         [StringLength(50)]
         public string LastName { get; set; }
-
-        public bool? EmployeeStatus { get; set; }
+        [StringLength(50)]
+        public string FullName { get; set; }
+        public bool EmployeeStatus { get; set; }
 
         [StringLength(20)]
         public string PhoneNumber { get; set; }
 
         [StringLength(100)]
         public string EmployeeAddress { get; set; }
+        [StringLength(20)]
+        public string Position { get; set; }
+        [StringLength(10)]
+        public string EmployeeCode { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
@@ -43,13 +48,10 @@ namespace DB_Models.Framework
         [StringLength(50)]
         public string UpdateBy { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Export_Info> Export_Info { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Import_Info> Import_Info { get; set; }
     }
 }

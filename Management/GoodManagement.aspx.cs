@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DB_ex1
+namespace DB_ex1.Management
 {
     public partial class GoodManagement : System.Web.UI.Page
     {
@@ -20,11 +20,11 @@ namespace DB_ex1
         }
         protected void LoadGridGood()
         {
-            GoodModel goodModel = new GoodModel();
-            List<Good> lstGood = goodModel.ListAll();
-            if (lstGood != null)
+            ListModel model = new ListModel();
+            List<Good> list = model.ListAll_Goods();
+            if (list != null)
             {
-                gvGood.DataSource = lstGood;
+                gvGood.DataSource = list;
                 gvGood.DataBind();
             }
         }

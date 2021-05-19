@@ -20,7 +20,7 @@ namespace DB_Models.Framework
 
         public int? EmployeeId { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
         [StringLength(50)]
         public string CreateBy { get; set; }
@@ -31,5 +31,11 @@ namespace DB_Models.Framework
         public string UpdateBy { get; set; }
 
         public virtual Employee Employee { get; set; }
+        [StringLength(50)]
+        public string Email { get; set; }
+        [StringLength(20)]
+        public string FirstName { get; set; }
+        [StringLength(20)]
+        public string LastName { get; set; }
     }
 }

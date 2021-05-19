@@ -27,12 +27,22 @@ namespace DB_Models
         }
         public bool CheckEmail (string email)
         {
-            object[] sqlParams =
-            {
-                new SqlParameter("@Email", email)
-            };
-            var res = context.Database.SqlQuery<bool>("Sp_Account_CheckEmail @Email", sqlParams).SingleOrDefault();
+            var res = context.Database.SqlQuery<bool>("Sp_Account_CheckEmail @Email", new SqlParameter("@Email", email)).SingleOrDefault();
             return res;
+        }
+        public void InsertAccount(Account account)
+        {
+            // Insert new account into database
+            string cmd = "insert into Account (FirstName, LastName, Username, AccPassword," +
+                " Email, CreateBy, CreateDate) values ('" + account.FirstName +
+                "', '" + account.LastName + "', '" + account.Username + "', '" + 
+                account.AccPassword + "', '" + account.Email + "', 'Self-Registered', GETDATE());";
+            context.Database.ExecuteSqlCommand(cmd);
+        }
+        public List<Account> ListAll()
+        {
+            var list = context.Database.SqlQuery<Account>("select * from Account").ToList();
+            return list;
         }
     }
 }
