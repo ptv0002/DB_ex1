@@ -5,55 +5,55 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
     <asp:Table CellPadding="4" runat="server" BackColor="Transparent" BorderColor="Transparent" BorderWidth="10" width="50%">
         <asp:TableRow>
-            <asp:TableCell Text="Name" ></asp:TableCell>
-            <asp:TableCell Text="Category"></asp:TableCell>
+            <asp:TableCell>Name</asp:TableCell>
+            <asp:TableCell>Category</asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:TextBox ID="goodsName" runat="server" width="100%"></asp:TextBox></asp:TableCell>
-            <asp:TableCell><asp:DropDownList ID="ddCategory" runat="server" width="100%"></asp:DropDownList></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="goodsName" runat="server" width="100%"/></asp:TableCell>
+            <asp:TableCell><asp:DropDownList ID="ddCategory" runat="server" width="100%"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator runat="server" ControlToValidate="goodsName" ErrorMessage="Good's name is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>
-            <asp:TableCell CssClass="small"><asp:Label runat="server" ID="ddCatError"></asp:Label></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="goodsName" ErrorMessage="Good's name is required" ForeColor="Red"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="ddCategory" InitialValue="-Select-" ErrorMessage="Category is required" ForeColor="Red"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell Text="Bar Code" ></asp:TableCell>
-            <asp:TableCell Text="Import Price"></asp:TableCell>
+            <asp:TableCell>Bar code</asp:TableCell>
+            <asp:TableCell>Import price</asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:TextBox ID="barcode" runat="server" width="100%"></asp:TextBox></asp:TableCell>
-            <asp:TableCell><asp:TextBox ID="importPrice" runat="server" width="100%"></asp:TextBox></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="barcode" runat="server" width="100%"/></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="importPrice" runat="server" width="100%"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator runat="server" ControlToValidate="barcode" ErrorMessage="Bar code is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>
-            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator runat="server" ControlToValidate="importPrice" ErrorMessage="Import price is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>        
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="barcode" ErrorMessage="Bar code is required" ForeColor="Red"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="importPrice" ErrorMessage="Import price is required" ForeColor="Red"/></asp:TableCell>        
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell Text="Min Quantity" ></asp:TableCell>
-            <asp:TableCell Text="Quantity"></asp:TableCell>
+            <asp:TableCell>Min quantity</asp:TableCell>
+            <asp:TableCell>Quantity</asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:TextBox ID="minQty" runat="server" width="100%" ></asp:TextBox></asp:TableCell>
-            <asp:TableCell><asp:TextBox ID="Qty" runat="server" width="100%"></asp:TextBox></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="minQty" runat="server" width="100%"/></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="Qty" runat="server" width="100%"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator runat="server" ControlToValidate="minQty" ErrorMessage="Min quantity is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>
-            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator runat="server" ControlToValidate="Qty" ErrorMessage="Quantity is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>        
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="minQty" ErrorMessage="Min quantity is required" ForeColor="Red"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="Qty" ErrorMessage="Quantity is required" ForeColor="Red"/></asp:TableCell>        
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell Text="Tax" ></asp:TableCell>
-            <asp:TableCell Text="Create By"></asp:TableCell>
+            <asp:TableCell>Tax</asp:TableCell>
+            <asp:TableCell>Create by</asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:TextBox ID="tax" runat="server" width="100%" ></asp:TextBox></asp:TableCell>
-            <asp:TableCell><asp:DropDownList ID="ddCreateBy" runat="server" width="100%"></asp:DropDownList></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="tax" runat="server" width="100%"/></asp:TableCell>
+            <asp:TableCell><asp:DropDownList ID="ddCreateBy" runat="server" width="100%"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator runat="server" ControlToValidate="tax" ErrorMessage="Tax percent is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>
-            <asp:TableCell CssClass="small"><asp:Label runat="server" ID="ddCreateError"></asp:Label></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="tax" ErrorMessage="Tax percent is required" ForeColor="Red"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="ddCreateBy" InitialValue="-Select-" ErrorMessage="This field is required" ForeColor="Red"/></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Label BorderWidth="3" BorderColor="Transparent" runat="server"></asp:Label>
+    <asp:Label BorderWidth="3" BorderColor="Transparent" runat="server"/>
     <asp:Button class= "btn btn-primary" ID="SaveButton" Text="Save" onClick="btnSave_Click" runat="server"/>
     <a class= "btn btn-secondary" href="/Management/GoodManagement.aspx">Cancel</a>
 </asp:Content>

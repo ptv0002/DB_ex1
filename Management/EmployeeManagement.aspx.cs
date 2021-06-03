@@ -25,8 +25,8 @@ namespace DB_ex1.Management
             List<Employee> list = model.ListAll_Employee();
             if(list != null)
             {
-                gvEmployee.DataSource = list;
-                gvEmployee.DataBind();
+                gv.DataSource = list;
+                gv.DataBind();
             }
         }
     }

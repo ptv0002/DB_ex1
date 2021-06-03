@@ -3,16 +3,15 @@
     <asp:Label Font-Bold="true" ForeColor="Black" Font-Size="XX-Large" runat="server" BorderWidth="10" BorderColor="Transparent">Categories</asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    <asp:LinkButton ForeColor="#333333" BorderWidth="10" BorderColor="Transparent" runat="server" data-target="#addPopup" data-toggle="modal" Text="Add" />    
-    <asp:GridView ID="gvCategory" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both" OnRowCommand="Edit_RowCommand" DataKeys="categoryId">
-        <AlternatingRowStyle BackColor="White"/>
+    <asp:LinkButton ForeColor="#333333" BorderWidth="10" BorderColor="Transparent" runat="server" Text="Add" OnClick="btnAdd"/>    
+    <asp:GridView ID="gv" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both" OnRowCommand="Edit_RowCommand" DataKeys="categoryId">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:LinkButton ForeColor = "#333333" runat= "server" Text="Edit" CommandName="Edit" data-target="#editPopup" data-toggle="modal"/>
+                    <asp:LinkButton ForeColor = "#333333" runat= "server" Text="Edit" CommandName="EditItem" CommandArgument='<%#Eval("Id") %>'/>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" />
+            <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" />
             <asp:BoundField DataField="categoryName" HeaderText="Category" ReadOnly="True" />
             <asp:BoundField DataField="categoryStatus" HeaderText="Status" ReadOnly="True" />
             <asp:BoundField DataField="CreateDate" HeaderText="Create date" ReadOnly="True" />
@@ -22,7 +21,8 @@
         </Columns>
         <HeaderStyle BackColor="#135857" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#135857" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#9fe9dd" />
+        <RowStyle BackColor= "#9fe9dd" />
+        <AlternatingRowStyle BackColor = "White" />
     </asp:GridView>
 
     <!---Popup for Add--->
@@ -36,24 +36,27 @@
                     </button>
                 </div>
                 <div class ="modal-body">
-                    <div><asp:Label runat="server" Text="Category Name"></asp:Label></div>
-                    <div><asp:TextBox ID="addCatName" runat="server"></asp:TextBox></div>
-                    <div class="small">
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="addCatName" ErrorMessage="Category name is required" ForeColor="Red" ValidationGroup="addGroup"></asp:RequiredFieldValidator>
-                    </div>
-                    <div><asp:Label runat="server" Text="Create By"></asp:Label></div>
-                    <div><asp:DropDownList ID="ddCreateBy" runat="server"></asp:DropDownList></div>
-                    <div class="small">
-                        <asp:Label runat="server" id="ddCreateError"></asp:Label></div>              
+                    <div><asp:Label runat="server" Text="Category Name"/></div>
+                    <div><asp:TextBox ID="addCatName" runat="server"/></div>
+                    <div><asp:RequiredFieldValidator CSSClass="small" runat="server" ControlToValidate="addCatName" ValidationGroup="add" ErrorMessage="Category name is required" ForeColor="Red"/></div>
+                    <div><asp:Label runat="server" Text="Create By"/></div>
+                    <div><asp:DropDownList ID="ddCreateBy" runat="server"/></div>
+                    <div><asp:Label runat="server" ID="ddCreateErr" ForeColor="Red" CssClass="small"/></div>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button class= "btn btn-primary" ID="AddSaveButton" Text="Save" onClick="btnSave_Add" runat="server" ValidationGroup="addGroup"/>
+                    <asp:Button class= "btn btn-primary" ID="AddSaveButton" Text="Save" onClick="btnSave_Add" runat="server" ValidationGroup="add"/>
                     <a class= "btn btn-secondary" data-dismiss="modal" >Cancel</a>
                 </div>
             </div>
         </div>
     </div>
-
+    <!--- Modal popup script--->
+    <script type="text/javascript" lang="javascript">
+        function ShowPopup(string) {
+            $(string).modal();
+        };
+    </script>
+    
     <!---Popup for Edit--->
     <div class="modal fade" id="editPopup" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -66,24 +69,24 @@
                 </div>
                 <div class ="modal-body">
                     <div>
-                        <asp:Label runat="server" Text="Category ID: "><asp:Label runat="server" ID="cId" Text='<%# Bind("id") %>'></asp:Label></asp:Label>
+                        <asp:Label runat="server" Text="Category ID: "><asp:Label runat="server" ID="cId"/></asp:Label>
                     </div>
-                    <div><asp:Label runat="server" Text="Category Name"></asp:Label></div>
-                    <div><asp:TextBox ID="editCatName" runat="server" Text='<%# Bind("categoryName") %>'></asp:TextBox></div>
-                    <div><asp:Label runat="server" Text="Status"></asp:Label></div>
-                    <div><asp:DropDownList ID="ddStatus" runat="server"></asp:DropDownList></div> 
-                    <div><asp:Label runat="server" Text="Update By"></asp:Label></div>
-                    <div><asp:DropDownList ID="ddUpdateBy" runat="server"></asp:DropDownList></div>
-                    <div class="small"><asp:Label runat ="server" ID="ddUpdateError"></asp:Label></div>              
+                    <div><asp:Label runat="server" Text="Category Name"/></div>
+                    <div><asp:TextBox ID="editCatName" runat="server"/></div>
+                    <div><asp:RequiredFieldValidator CSSClass="small" runat="server" ControlToValidate="editCatName" ErrorMessage="Category name is required" ForeColor="Red" ValidationGroup="edit"/></div>
+                    <div><asp:Label runat="server" Text="Status"/></div>
+                    <div><asp:DropDownList ID="ddStatus" runat="server"/></div> 
+                    <div><asp:Label runat="server" Text="Update By"/></div>
+                    <div><asp:DropDownList ID="ddUpdateBy" runat="server"/></div>
+                    <div><asp:Label runat="server" ID="ddUpdateErr" ForeColor="Red" CssClass="small"/></div>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button class= "btn btn-primary" ID="EditSaveButton" Text="Save" onClick="btnSave_Edit" runat="server" ValidationGroup="editGroup"/>
-                    <a class= "btn btn-secondary" data-dismiss="modal" >Cancel</a>
+                    <asp:Button class= "btn btn-primary" ID="EditSaveButton" Text="Save" onClick="btnSave_Edit" runat="server" ValidationGroup="edit"/>
+                    <a class= "btn btn-secondary" data-dismiss="modal">Cancel</a>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div>    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpScript" runat="server">
 </asp:Content>

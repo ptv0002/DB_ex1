@@ -23,6 +23,9 @@ namespace DB_Models.Framework
         [StringLength(50)]
         public string LastName { get; set; }
 
+        [StringLength(100)]
+        public string FullName { get; set; }
+        public bool CustomerStatus { get; set; }
         [StringLength(20)]
         public string PhoneNumber { get; set; }
 
@@ -34,19 +37,16 @@ namespace DB_Models.Framework
 
         public double MembershipScore { get; set; }
 
-        public int CardTypeId { get; set; }
-
         public DateTime CreateDate { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string CreateBy { get; set; }
 
         public DateTime? UpdateDate { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string UpdateBy { get; set; }
 
-        public virtual CardType CardType { get; set; }
 
         public virtual ICollection<Export_Info> Export_Info { get; set; }
     }

@@ -17,11 +17,12 @@ namespace DB_Models.Framework
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Export_Info> Export_Info { get; set; }
+        public virtual DbSet<Export_Goods> Export_Goods { get; set; }
         public virtual DbSet<Fixed_variable> Fixed_variable { get; set; }
         public virtual DbSet<Good> Goods { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Import_Info> Import_Info { get; set; }
-        public virtual DbSet<Import_Goods> InOut_Goods { get; set; }
+        public virtual DbSet<Import_Goods> Import_Goods { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

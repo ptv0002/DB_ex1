@@ -78,22 +78,13 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.DropDownList ddUpdateBy;
 
         /// <summary>
-        /// ddError control.
+        /// gv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddError;
-
-        /// <summary>
-        /// gv_importGoods control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_importGoods;
+        protected global::System.Web.UI.WebControls.GridView gv;
 
         /// <summary>
         /// SaveButton control.

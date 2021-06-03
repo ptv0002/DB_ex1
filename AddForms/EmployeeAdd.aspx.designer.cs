@@ -78,15 +78,6 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
 
         /// <summary>
-        /// ddError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddError;
-
-        /// <summary>
         /// SaveButton control.
         /// </summary>
         /// <remarks>

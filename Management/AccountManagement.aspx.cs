@@ -20,12 +20,12 @@ namespace DB_ex1.Management
         }
         protected void LoadGridAccount()
         {
-            AccountModel accountModel = new AccountModel();
-            List<Account> lstAccount = accountModel.ListAll();
-            if (lstAccount != null)
+            AccountModel model = new AccountModel();
+            List<Account> list = model.ListAll();
+            if (list != null)
             {
-                gvAccount.DataSource = lstAccount;
-                gvAccount.DataBind();
+                gv.DataSource = list;
+                gv.DataBind();
             }
         }
     }

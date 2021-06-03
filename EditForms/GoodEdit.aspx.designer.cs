@@ -51,13 +51,13 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.TextBox barcode;
 
         /// <summary>
-        /// importPrice control.
+        /// tax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox importPrice;
+        protected global::System.Web.UI.WebControls.TextBox tax;
 
         /// <summary>
         /// minQty control.
@@ -78,22 +78,22 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.TextBox Qty;
 
         /// <summary>
-        /// tax control.
+        /// importPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tax;
+        protected global::System.Web.UI.WebControls.TextBox importPrice;
 
         /// <summary>
-        /// ddStatus control.
+        /// salePrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddStatus;
+        protected global::System.Web.UI.WebControls.TextBox salePrice;
 
         /// <summary>
         /// ddUpdateBy control.
@@ -105,13 +105,13 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.DropDownList ddUpdateBy;
 
         /// <summary>
-        /// ddError control.
+        /// ddStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddError;
+        protected global::System.Web.UI.WebControls.DropDownList ddStatus;
 
         /// <summary>
         /// SaveButton control.

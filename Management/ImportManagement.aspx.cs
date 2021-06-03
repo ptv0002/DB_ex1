@@ -24,8 +24,8 @@ namespace DB_ex1.Management
             List<Import_Info> list = model.ListAll_ImportInfo();
             if (list != null)
             {
-                gvImport.DataSource = list;
-                gvImport.DataBind();
+                gv.DataSource = list;
+                gv.DataBind();
             }
         }
     }

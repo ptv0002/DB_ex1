@@ -5,8 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
     <asp:LinkButton ForeColor="#333333" BorderWidth="10" BorderColor="Transparent" runat="server" href="/AddForms/EmployeeAdd.aspx">Add</asp:LinkButton>    
-    <asp:GridView ID="gvEmployee" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
-        <AlternatingRowStyle BackColor ="White" />
+    <asp:GridView ID="gv" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
@@ -28,7 +27,8 @@
         </Columns>
         <HeaderStyle BackColor="#135857" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#135857" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#9fe9dd" />
+        <RowStyle BackColor= "#9fe9dd" />
+        <AlternatingRowStyle BackColor = "White" />
     </asp:GridView>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpScript" runat="server">

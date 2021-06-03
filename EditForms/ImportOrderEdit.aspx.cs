@@ -16,7 +16,7 @@ namespace DB_ex1.EditForms
         private static int imInfoId;
         static DB_ex1_Context context = new DB_ex1_Context();
         static DbContextTransaction transaction;
-        private static int load;
+        private static int load = 0;
 
         static ListModel model = new ListModel();
         static List<Import_Goods> lstImportGoods;
@@ -30,49 +30,27 @@ namespace DB_ex1.EditForms
                 transaction = context.Database.BeginTransaction();
                 load++;
             }
-
-            lstImportGoods = model.ListImportGoods(imInfoId, context);
-            lstImportInfo = model.ListSingle_ImportInfo(imInfoId, context);
-
             if (!IsPostBack)
             {
+                lstImportGoods = model.ListImportGoods(imInfoId, context);
+                lstImportInfo = model.ListSingle_ImportInfo(imInfoId, context);
+                lstImportInfo.ElementAt(0).UpdateBy = "";
                 BindImportInfo(lstImportInfo);
+                BindStatus(ddPaymentStatus, "Fully paid", "Not paid", lstImportInfo.ElementAt(0).PaymentStatus);
                 BindGoods(lstImportGoods);
                 BindFooterRow();
             }
         }
-        protected void LoadDropdownGood(DropDownList dd, string selected)
+        protected void BindSupplierEmployee(string supplierName, string employeeName)
         {
-            //ListModel model = new ListModel();
-            List<Good> list = model.ListAll_Goods();
-            if (list != null)
-            {
-                dd.DataSource = list;
-                dd.DataTextField = "goodsName";
-                dd.DataBind();
-                dd.Items.Insert(0, new ListItem(selected, selected));
-
-            }
-        }
-
-        protected void BindImportInfo(List<Import_Info> list)
-        {
-            // Load other info in the ImportInfo portion
-            IoId.Text = list.ElementAt(0).Id.ToString();
-            totalImport.Text = list.ElementAt(0).TotalImport.ToString();
-            paymentType.Text = list.ElementAt(0).PaymentType;
-
-            BindStatus(ddPaymentStatus, "Fully paid", "Not paid", list.ElementAt(0).PaymentStatus);
-
             // Load Supplier's name to dropdown
-            //ListModel model = new ListModel();
             List<Supplier> lstSupplier = model.ListAll_Supplier();
             if (lstSupplier != null)
             {
                 ddSupplier.DataSource = lstSupplier;
                 ddSupplier.DataTextField = "supplierName";
                 ddSupplier.DataBind();
-                ddSupplier.Items.Insert(0, new ListItem(list.ElementAt(0).SupplierName, "0"));
+                ddSupplier.Items.Insert(0, supplierName);
             }
             // Load Employee's name to UpdateBy dropdown
             List<Employee> lstEmployee = model.ListAll_Employee();
@@ -81,65 +59,35 @@ namespace DB_ex1.EditForms
                 ddUpdateBy.DataSource = lstEmployee;
                 ddUpdateBy.DataTextField = "FullName";
                 ddUpdateBy.DataBind();
-                if (list.ElementAt(0).UpdateBy == "")
+                if (employeeName == "")
                 {
-                    ddUpdateBy.Items.Insert(0, new ListItem("-Select-", "0"));
+                    ddUpdateBy.Items.Insert(0, "-Select-");
                 }
                 else
                 {
-                    ddUpdateBy.Items.Insert(0, new ListItem(list.ElementAt(0).UpdateBy, "0"));
+                    ddUpdateBy.Items.Insert(0, employeeName);
                 }
 
             }
         }
-        public void BindStatus(DropDownList dd, string trueText, string falseText, bool status)
+        protected void BindImportInfo(List<Import_Info> list)
         {
-            string text;
-            string value;
-            // Load PaymentStatus
-            if (status == true)
-            {
-                text = trueText;
-                value = "true";
-            }
-            else
-            {
-                text = falseText;
-                value = "false";
-            }
-
-            dd.Items.Insert(0, new ListItem(text, value.ToString()));
-            dd.Items.Insert(1, new ListItem(trueText, "true"));
-            dd.Items.Insert(2, new ListItem(falseText, "false"));
+            // Load other info in the ImportInfo portion
+            IoId.Text = list.ElementAt(0).Id.ToString();
+            totalImport.Text = list.ElementAt(0).TotalImport.ToString();
+            paymentType.Text = list.ElementAt(0).PaymentType;
+            BindSupplierEmployee(list.ElementAt(0).SupplierName, list.ElementAt(0).UpdateBy);
         }
-        public void BindGoods(List<Import_Goods> list)
-        {
-            if (list != null)
-            {
-                gv_importGoods.DataSource = list;
-                gv_importGoods.DataBind();
-            }
-            for (int i = 0; i < list.Count(); i++)
-            {
-                Label label = (Label)gv_importGoods.Rows[i].FindControl("labelId");
-                label.Text = (i+1).ToString();
-            }
-        }
-        public void BindFooterRow()
-        {
-            // Load goods into DropDownList on footer row
-            DropDownList dd = gv_importGoods.FooterRow.FindControl("ddGoodsNew") as DropDownList;
-            LoadDropdownGood(dd, "-Select-");
-        }
+        
         public void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
-            gv_importGoods.EditIndex = e.NewEditIndex;
+            gv.EditIndex = e.NewEditIndex;
             
             BindGoods(lstImportGoods); // Bind Goods list first so that FindControl() could work
 
             // Load goods into DropDownList on selected row
-            DropDownList dd = gv_importGoods.Rows[gv_importGoods.EditIndex].FindControl("ddGoods") as DropDownList;
-            string selected = lstImportGoods.ElementAt(gv_importGoods.EditIndex).GoodsName;
+            DropDownList dd = gv.Rows[gv.EditIndex].FindControl("ddGoods") as DropDownList;
+            string selected = lstImportGoods.ElementAt(gv.EditIndex).GoodsName;
             LoadDropdownGood(dd, selected);
             BindFooterRow(); // Rebind footer row
         }
@@ -194,7 +142,6 @@ namespace DB_ex1.EditForms
                 TotalPrice = (double)(qty * price),
             };
             
-            
             // Save edited good to the Transaction DB
             UpdateModel updateModel = new UpdateModel();
             updateModel.UpdateImportGood(imGood,context);
@@ -206,76 +153,55 @@ namespace DB_ex1.EditForms
         public void OnAdd(object sender, EventArgs e)
         {
             // Get info from footer
-            DropDownList dd = gv_importGoods.FooterRow.FindControl("ddGoodsNew") as DropDownList;
+            DropDownList dd = gv.FooterRow.FindControl("ddGoodsNew") as DropDownList;
             string name = dd.SelectedItem.Text;
-            if (name != "-Select-")
+            TextBox text = gv.FooterRow.FindControl("qtyNew") as TextBox;
+            int qty = Convert.ToInt32(text.Text);
+
+            TextBox text2 = gv.FooterRow.FindControl("priceNew") as TextBox;
+            double price = Convert.ToDouble(text2.Text);
+
+            List<Good> good = model.ListSingle_Good(0, name);
+            Import_Goods imGood = new Import_Goods
             {
-                TextBox text = gv_importGoods.FooterRow.FindControl("qtyNew") as TextBox;
-                int qty = Convert.ToInt32(text.Text);
+                GoodsName = name,
+                imQuantity = qty,
 
-                TextBox text2 = gv_importGoods.FooterRow.FindControl("priceNew") as TextBox;
-                double price = Convert.ToDouble(text2.Text);
+                // Derive other elements from updated elements
+                Id = lstImportGoods.Count() + 1,
+                Barcode = good.ElementAt(0).GoodsCode,
+                Price = price,
+                TotalPrice = (double)(qty * price),
+                ImportInfoId = imInfoId
+            };
 
-                List<Good> good = model.ListSingle_Good(0, name);
-                Import_Goods imGood = new Import_Goods
-                {
-                    GoodsName = name,
-                    imQuantity = qty,
+            // Save new info database and listGoods
+            InsertModel insertModel = new InsertModel();
+            insertModel.InsertImportGood(imGood, context);
+            lstImportGoods.Add(imGood);
 
-                    // Derive other elements from updated elements
-                    Id = lstImportGoods.Count() + 1,
-                    Barcode = good.ElementAt(0).GoodsCode,
-                    Price = price,
-                    TotalPrice = (double)(qty * price),
-                    ImportInfoId = imInfoId
-                };
-
-                // Save new info database and listGoods
-                InsertModel insertModel = new InsertModel();
-                insertModel.InsertImportGood(imGood,context);
-                lstImportGoods.Add(imGood);
-
-                // -----Done with goods list, below is update of Import info-----
-                UpdateInfo(lstImportGoods);
-            }
-            else
-            {
-                Label label = gv_importGoods.FooterRow.FindControl("ddNewErr") as Label;
-                label.Text = "This field is required";
-                label.ForeColor = System.Drawing.Color.Red;
-            }
+            // -----Done with goods list, below is update of Import info-----
+            UpdateInfo(lstImportGoods);
         }
         public void OnCancel(object sender, EventArgs e)
         {
-            //List<Import_Goods> listGoods = (List<Import_Goods>)Session["CurrentGoods"];
-
-            gv_importGoods.EditIndex = -1;
+            gv.EditIndex = -1;
             BindGoods(lstImportGoods);
             BindFooterRow(); // Rebind footer row
         }
         public void btnSave_Click(object sender, EventArgs e)
         {
-            if (ddUpdateBy.SelectedItem.Text != "-Select-")
+            UpdateInfo(lstImportGoods);
+            context.SaveChanges();
+            if (transaction.UnderlyingTransaction.Connection != null)
             {
-                context.SaveChanges();
-                if (transaction.UnderlyingTransaction.Connection != null)
-                {
-                    transaction.Commit();
-                }
-                Response.Redirect("/Management/ImportManagement.aspx");
+                transaction.Commit();
             }
-            else
-            {
-                ddError.Text = "This field is required";
-                ddError.ForeColor = System.Drawing.Color.Red;
-            }
+            Response.Redirect("/Management/ImportManagement.aspx");
         }
         public void btnCancel_Click(object sender, EventArgs e)
         {
-            if (transaction.UnderlyingTransaction.Connection != null)
-            {
-                transaction.Dispose();
-            }
+            transaction.Dispose();
             Response.Redirect("/Management/ImportManagement.aspx");
         }
         public void UpdateInfo(List<Import_Goods> listGoods)
@@ -310,6 +236,7 @@ namespace DB_ex1.EditForms
                 PaymentType = paymentType.Text,
                 PaymentStatus = Convert.ToBoolean(ddPaymentStatus.SelectedValue),
                 TotalImport = sum,
+                CreateBy = "",
                 UpdateBy = lstImportInfo.ElementAt(0).UpdateBy
             };
 
@@ -317,11 +244,61 @@ namespace DB_ex1.EditForms
             model.UpdateImportInfo(info, context);
 
             // Bind all the info and return the pointer
-            gv_importGoods.EditIndex = -1;
+            gv.EditIndex = -1;
             BindImportInfo(lstImportInfo);
             BindGoods(listGoods);
             BindFooterRow();
         }
+        public void BindStatus(DropDownList dd, string trueText, string falseText, bool status)
+        {
+            string text;
+            string value;
+            if (status == true)
+            {
+                text = trueText;
+                value = "true";
+            }
+            else
+            {
+                text = falseText;
+                value = "false";
+            }
 
+            dd.Items.Insert(0, new ListItem(text, value.ToString()));
+            dd.Items.Insert(1, new ListItem(trueText, "true"));
+            dd.Items.Insert(2, new ListItem(falseText, "false"));
+        }
+        public void BindGoods(List<Import_Goods> list)
+        {
+            if (list != null)
+            {
+                gv.DataSource = list;
+                gv.DataBind();
+            }
+            for (int i = 0; i < list.Count(); i++)
+            {
+                Label label = (Label)gv.Rows[i].FindControl("labelId");
+                label.Text = (i + 1).ToString();
+            }
+        }
+        public void BindFooterRow()
+        {
+            // Load goods into DropDownList on footer row
+            DropDownList dd = gv.FooterRow.FindControl("ddGoodsNew") as DropDownList;
+            LoadDropdownGood(dd, "-Select-");
+        }
+        protected void LoadDropdownGood(DropDownList dd, string selected)
+        {
+            //ListModel model = new ListModel();
+            List<Good> list = model.ListAll_Goods();
+            if (list != null)
+            {
+                dd.DataSource = list;
+                dd.DataTextField = "goodsName";
+                dd.DataBind();
+                dd.Items.Insert(0, selected);
+
+            }
+        }
     }
 }

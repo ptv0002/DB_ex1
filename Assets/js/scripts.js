@@ -19,16 +19,4 @@
         e.preventDefault();
         $("body").toggleClass("sb-sidenav-toggled");
     });
-
-    function ShowPopup() {
-        $('modal').show();
-        $('#<%=pnlpopup.ClientID %>').show();
-    }
-    function HidePopup() {
-        $('modal').hide();
-        $('#<%=pnlpopup.ClientID %>').hide();
-    }
-    $(".btnClose").live('click', function () {
-        HidePopup();
-    });
 })(jQuery);

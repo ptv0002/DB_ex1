@@ -24,6 +24,15 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.Table importInfo;
 
         /// <summary>
+        /// IoId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label IoId;
+
+        /// <summary>
         /// ddSupplier control.
         /// </summary>
         /// <remarks>
@@ -31,15 +40,6 @@ namespace DB_ex1.AddForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddSupplier;
-
-        /// <summary>
-        /// ddEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddEmployee;
 
         /// <summary>
         /// ddPaymentStatus control.
@@ -60,15 +60,6 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.TextBox paymentType;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
-        /// <summary>
         /// totalImport control.
         /// </summary>
         /// <remarks>
@@ -78,31 +69,22 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.Label totalImport;
 
         /// <summary>
-        /// updateBy control.
+        /// ddCreateBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox updateBy;
+        protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
 
         /// <summary>
-        /// RequiredFieldValidator6 control.
+        /// gv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
-
-        /// <summary>
-        /// gv_importGoods control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_importGoods;
+        protected global::System.Web.UI.WebControls.GridView gv;
 
         /// <summary>
         /// SaveButton control.
@@ -112,5 +94,14 @@ namespace DB_ex1.AddForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SaveButton;
+
+        /// <summary>
+        /// CancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CancelButton;
     }
 }

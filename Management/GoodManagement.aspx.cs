@@ -24,8 +24,8 @@ namespace DB_ex1.Management
             List<Good> list = model.ListAll_Goods();
             if (list != null)
             {
-                gvGood.DataSource = list;
-                gvGood.DataBind();
+                gv.DataSource = list;
+                gv.DataBind();
             }
         }
     }

@@ -69,13 +69,13 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.TextBox phoneNumber;
 
         /// <summary>
-        /// employeeAddress control.
+        /// address control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox employeeAddress;
+        protected global::System.Web.UI.WebControls.TextBox address;
 
         /// <summary>
         /// ddUpdateBy control.
@@ -94,15 +94,6 @@ namespace DB_ex1.EditForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddStatus;
-
-        /// <summary>
-        /// ddError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddError;
 
         /// <summary>
         /// SaveButton control.

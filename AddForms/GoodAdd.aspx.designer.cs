@@ -33,15 +33,6 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.DropDownList ddCategory;
 
         /// <summary>
-        /// ddCatError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddCatError;
-
-        /// <summary>
         /// barcode control.
         /// </summary>
         /// <remarks>
@@ -94,15 +85,6 @@ namespace DB_ex1.AddForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
-
-        /// <summary>
-        /// ddCreateError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddCreateError;
 
         /// <summary>
         /// SaveButton control.

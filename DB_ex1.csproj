@@ -121,12 +121,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddForms\CustomerAdd.aspx.cs">
+      <DependentUpon>CustomerAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddForms\CustomerAdd.aspx.designer.cs">
+      <DependentUpon>CustomerAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddForms\ExportOrderAdd.aspx.cs">
+      <DependentUpon>ExportOrderAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddForms\ExportOrderAdd.aspx.designer.cs">
+      <DependentUpon>ExportOrderAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddForms\ImportOrderAdd.aspx.cs">
       <DependentUpon>ImportOrderAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AddForms\ImportOrderAdd.aspx.designer.cs">
       <DependentUpon>ImportOrderAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddForms\SupplierAdd.aspx.cs">
+      <DependentUpon>SupplierAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddForms\SupplierAdd.aspx.designer.cs">
+      <DependentUpon>SupplierAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -137,6 +158,13 @@
     </Compile>
     <Compile Include="AddForms\EmployeeAdd.aspx.designer.cs">
       <DependentUpon>EmployeeAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditForms\CustomerEdit.aspx.cs">
+      <DependentUpon>CustomerEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditForms\CustomerEdit.aspx.designer.cs">
+      <DependentUpon>CustomerEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditForms\EmployeeEdit.aspx.cs">
       <DependentUpon>EmployeeEdit.aspx</DependentUpon>
@@ -152,6 +180,13 @@
     <Compile Include="AddForms\GoodAdd.aspx.designer.cs">
       <DependentUpon>GoodAdd.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditForms\ExportOrderEdit.aspx.cs">
+      <DependentUpon>ExportOrderEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditForms\ExportOrderEdit.aspx.designer.cs">
+      <DependentUpon>ExportOrderEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditForms\GoodEdit.aspx.cs">
       <DependentUpon>GoodEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,6 +200,13 @@
     </Compile>
     <Compile Include="EditForms\ImportOrderEdit.aspx.designer.cs">
       <DependentUpon>ImportOrderEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditForms\SupplierEdit.aspx.cs">
+      <DependentUpon>SupplierEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditForms\SupplierEdit.aspx.designer.cs">
+      <DependentUpon>SupplierEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -201,12 +243,26 @@
     <Compile Include="Management\CategoryManagement.aspx.designer.cs">
       <DependentUpon>CategoryManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Management\CustomerManagement.aspx.cs">
+      <DependentUpon>CustomerManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\CustomerManagement.aspx.designer.cs">
+      <DependentUpon>CustomerManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Management\EmployeeManagement.aspx.cs">
       <DependentUpon>EmployeeManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Management\EmployeeManagement.aspx.designer.cs">
       <DependentUpon>EmployeeManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ExportManagement.aspx.cs">
+      <DependentUpon>ExportManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\ExportManagement.aspx.designer.cs">
+      <DependentUpon>ExportManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\GoodManagement.aspx.cs">
       <DependentUpon>GoodManagement.aspx</DependentUpon>
@@ -260,7 +316,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddForms\CustomerAdd.aspx" />
+    <Content Include="AddForms\ExportOrderAdd.aspx" />
     <Content Include="AddForms\ImportOrderAdd.aspx" />
+    <Content Include="AddForms\SupplierAdd.aspx" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -268,19 +327,24 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="AddForms\EmployeeAdd.aspx" />
+    <Content Include="EditForms\CustomerEdit.aspx" />
     <Content Include="EditForms\EmployeeEdit.aspx" />
     <Content Include="AddForms\GoodAdd.aspx" />
+    <Content Include="EditForms\ExportOrderEdit.aspx" />
     <Content Include="EditForms\GoodEdit.aspx" />
     <Content Include="EditForms\ImportOrderEdit.aspx" />
+    <Content Include="EditForms\SupplierEdit.aspx" />
     <Content Include="Login\Register.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Login\ResetPassword.aspx" />
     <Content Include="Management\AccountManagement.aspx" />
     <Content Include="Management\CategoryManagement.aspx" />
+    <Content Include="Management\CustomerManagement.aspx" />
     <Content Include="Management\EmployeeManagement.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Management\ExportManagement.aspx" />
     <Content Include="Management\GoodManagement.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\ForgotPassword.aspx" />

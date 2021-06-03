@@ -15,89 +15,110 @@ namespace DB_Models
         {
             context = new DB_ex1_Context();
         }
-        public void UpdateImportGood(Import_Goods good)
+        public void UpdateImportGood(Import_Goods item, DB_ex1_Context con)
         {
             object[] sqlParams =
             {
-                new SqlParameter("@id", good.Id),
-                new SqlParameter("@goodsName", good.GoodsName),
-                new SqlParameter("@qty", good.imQuantity),
-                new SqlParameter("@price", good.Price),
-                new SqlParameter("@total", good.TotalPrice)
-            };
-            context.Database.ExecuteSqlCommand("Sp_ImportGoods_Update @id, @goodsName, @price, @total, @qty", sqlParams);
-        }
-        public void UpdateImportGood(Import_Goods good, DB_ex1_Context con)
-        {
-            object[] sqlParams =
-            {
-                new SqlParameter("@id", good.Id),
-                new SqlParameter("@goodsName", good.GoodsName),
-                new SqlParameter("@qty", good.imQuantity),
-                new SqlParameter("@price", good.Price),
-                new SqlParameter("@total", good.TotalPrice)
+                new SqlParameter("@id", item.Id),
+                new SqlParameter("@goodsName", item.GoodsName),
+                new SqlParameter("@qty", item.imQuantity),
+                new SqlParameter("@price", item.Price),
+                new SqlParameter("@total", item.TotalPrice)
             };
             con.Database.ExecuteSqlCommand("Sp_ImportGoods_Update @id, @goodsName, @price, @total, @qty", sqlParams);
         }
-        public void UpdateImportInfo(Import_Info info, DB_ex1_Context con)
+        public void UpdateImportInfo(Import_Info item, DB_ex1_Context con)
         {
             object[] sqlParams =
             {
-                new SqlParameter("@id", info.Id),
-                new SqlParameter("@supplier", info.SupplierName),
-                new SqlParameter("@total", info.TotalImport),
-                new SqlParameter("@payStatus", Convert.ToByte(info.PaymentStatus)),
-                new SqlParameter("@payType", info.PaymentType),
-                new SqlParameter("@updateby", info.UpdateBy)
+                new SqlParameter("@id", item.Id),
+                new SqlParameter("@supplier", item.SupplierName),
+                new SqlParameter("@total", item.TotalImport),
+                new SqlParameter("@payStatus", Convert.ToByte(item.PaymentStatus)),
+                new SqlParameter("@payType", item.PaymentType),
+                new SqlParameter("@createby", item.CreateBy),
+                new SqlParameter("@updateby", item.UpdateBy)
             };
-            con.Database.ExecuteSqlCommand("Sp_ImportInfo_Update @id, @supplier, @total, @payStatus, @payType, @updateby", sqlParams);
+            con.Database.ExecuteSqlCommand("Sp_ImportInfo_Update @id, @supplier, @total, @payStatus, @payType, @createby, @updateby", sqlParams);
         }
-        public void UpdateEmployee(Employee employee)
+        public void UpdateEmployee(Employee item)
         {
             // Update info to database
             object[] sqlParams =
             {
-                new SqlParameter("@id", employee.Id),
-                new SqlParameter("@status", Convert.ToByte(employee.EmployeeStatus)),
-                new SqlParameter("@first", employee.FirstName),
-                new SqlParameter("@last", employee.LastName),
-                new SqlParameter("@phone", employee.PhoneNumber),
-                new SqlParameter("@address", employee.EmployeeAddress),
-                new SqlParameter("@updateby", employee.UpdateBy),
-                new SqlParameter("@code", employee.EmployeeCode),
-                new SqlParameter("@postion", employee.Position)
+                new SqlParameter("@id", item.Id),
+                new SqlParameter("@status", Convert.ToByte(item.EmployeeStatus)),
+                new SqlParameter("@first", item.FirstName),
+                new SqlParameter("@last", item.LastName),
+                new SqlParameter("@phone", item.PhoneNumber),
+                new SqlParameter("@address", item.EmployeeAddress),
+                new SqlParameter("@updateby", item.UpdateBy),
+                new SqlParameter("@code", item.EmployeeCode),
+                new SqlParameter("@postion", item.Position)
             };
             context.Database.ExecuteSqlCommand("Sp_Employee_Update @first, @last, @phone, @address, @updateby, @id, @status, @code, @postion", sqlParams);
         }
-        public void UpdateCategory(Category category)
+        public void UpdateSupplier(Supplier item)
+        {
+            // Update info to database
+            object[] sqlParams =
+            {
+                new SqlParameter("@id", item.Id),
+                new SqlParameter("@status", Convert.ToByte(item.SupplierStatus)),
+                new SqlParameter("@name", item.SupplierName),
+                new SqlParameter("@phone", item.PhoneNumber),
+                new SqlParameter("@address", item.SupplierAddress),
+                new SqlParameter("@updateby", item.UpdateBy)
+            };
+            context.Database.ExecuteSqlCommand("Sp_Supplier_Update @name, @phone, @address, @updateby, @id, @status", sqlParams);
+        }
+        public void UpdateCustomer(Customer item)
+        {
+            // Update info to database
+            object[] sqlParams =
+            {
+                new SqlParameter("@id", item.Id),
+                new SqlParameter("@status", Convert.ToByte(item.CustomerStatus)),
+                new SqlParameter("@first", item.FirstName),
+                new SqlParameter("@last", item.LastName),
+                new SqlParameter("@phone", item.PhoneNumber),
+                new SqlParameter("@address", item.CustomerAddress),
+                new SqlParameter("@updateby", item.UpdateBy),
+                new SqlParameter("@score", item.MembershipScore),
+                new SqlParameter("@citizenId", item.CitizenId)
+            };
+            context.Database.ExecuteSqlCommand("Sp_Customer_Update @first, @last, @phone, @address, @updateby, @score, @citizenId, @id, @status", sqlParams);
+        }
+        public void UpdateCategory(Category item)
         {
             // Update category into database
             object[] sqlParams =
             {                
-                new SqlParameter("@id", category.Id),
-                new SqlParameter("@name", category.CategoryName),
-                new SqlParameter("@status", Convert.ToByte(category.CategoryStatus)),
-                new SqlParameter("@updateby", category.UpdateBy)
+                new SqlParameter("@id", item.Id),
+                new SqlParameter("@name", item.CategoryName),
+                new SqlParameter("@status", Convert.ToByte(item.CategoryStatus)),
+                new SqlParameter("@updateby", item.UpdateBy)
             };
             context.Database.ExecuteSqlCommand("Sp_Category_Update @id, @name, @status, @updateby", sqlParams);
         }
-        public void UpdateGood(Good good)
+        public void UpdateGood(Good item)
         {
             // Update good into database
             object[] sqlParams =
             {
-                new SqlParameter("@id", good.Id),
-                new SqlParameter("@name", good.GoodsName),
-                new SqlParameter("@cat", good.categoryName),
-                new SqlParameter("@status", Convert.ToByte(good.GoodsStatus)),
-                new SqlParameter("@code", good.GoodsCode),
-                new SqlParameter("@importPrice", good.ImportPrice),
-                new SqlParameter("@minQty", good.MinQuantity),
-                new SqlParameter("@qty", good.GoodsQuantity),
-                new SqlParameter("@tax", good.TaxPercent),
-                new SqlParameter("@updateby", good.UpdateBy)
+                new SqlParameter("@id", item.Id),
+                new SqlParameter("@name", item.GoodsName),
+                new SqlParameter("@cat", item.categoryName),
+                new SqlParameter("@status", Convert.ToByte(item.GoodsStatus)),
+                new SqlParameter("@code", item.GoodsCode),
+                new SqlParameter("@importPrice", item.ImportPrice),        
+                new SqlParameter("@salePrice", item.SalePrice),
+                new SqlParameter("@minQty", item.MinQuantity),
+                new SqlParameter("@qty", item.GoodsQuantity),
+                new SqlParameter("@tax", item.TaxPercent),
+                new SqlParameter("@updateby", item.UpdateBy)
             };
-            context.Database.ExecuteSqlCommand("Sp_Goods_Update @id, @name, @cat, @status, @code, @importPrice, @minQty, @qty, @tax, @updateby", sqlParams);
+            context.Database.ExecuteSqlCommand("Sp_Goods_Update @id, @name, @cat, @status, @code, @importPrice, @salePrice, @minQty, @qty, @tax, @updateby", sqlParams);
         }
 
     }

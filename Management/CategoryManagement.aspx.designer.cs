@@ -15,13 +15,13 @@ namespace DB_ex1.Management
     {
 
         /// <summary>
-        /// gvCategory control.
+        /// gv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCategory;
+        protected global::System.Web.UI.WebControls.GridView gv;
 
         /// <summary>
         /// addCatName control.
@@ -42,13 +42,13 @@ namespace DB_ex1.Management
         protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
 
         /// <summary>
-        /// ddCreateError control.
+        /// ddCreateErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddCreateError;
+        protected global::System.Web.UI.WebControls.Label ddCreateErr;
 
         /// <summary>
         /// AddSaveButton control.
@@ -96,13 +96,13 @@ namespace DB_ex1.Management
         protected global::System.Web.UI.WebControls.DropDownList ddUpdateBy;
 
         /// <summary>
-        /// ddUpdateError control.
+        /// ddUpdateErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ddUpdateError;
+        protected global::System.Web.UI.WebControls.Label ddUpdateErr;
 
         /// <summary>
         /// EditSaveButton control.

@@ -24,8 +24,8 @@ namespace DB_ex1.Management
             List<Supplier> list = model.ListAll_Supplier();
             if (list != null)
             {
-                gvSupplier.DataSource = list;
-                gvSupplier.DataBind();
+                gv.DataSource = list;
+                gv.DataBind();
             }
         }
     }

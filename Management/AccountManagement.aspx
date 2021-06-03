@@ -3,8 +3,7 @@
     <asp:Label Font-Bold="true" ForeColor="Black" Font-Size="XX-Large" runat="server" BorderWidth="10" BorderColor="Transparent">Accounts</asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    <asp:GridView ID="gvAccount" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
-        <AlternatingRowStyle BackColor ="White" />
+    <asp:GridView ID="gv" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
         <Columns>
             <asp:BoundField DataField="accId" HeaderText="ID" ReadOnly="True" />
             <asp:BoundField DataField="FirstName" HeaderText="First name" ReadOnly="True" />
@@ -19,7 +18,8 @@
         </Columns>
         <HeaderStyle BackColor="#135857" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#135857" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#9fe9dd" />
+        <RowStyle BackColor= "#9fe9dd" />
+        <AlternatingRowStyle BackColor = "White" />
     </asp:GridView>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpScript" runat="server">

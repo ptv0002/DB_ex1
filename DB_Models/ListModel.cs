@@ -22,16 +22,28 @@ namespace DB_Models
             var list = context.Database.SqlQuery<Good>("Sp_Goods_ListAll").ToList();
             return list;
         }
-        public List<Good> ListSingle_Good(int? goodId, string goodsName)
+        public List<Good> ListSingle_Good(int? id, string name)
         {
             object[] sqlParams =
            {
-                new SqlParameter("@id", goodId),
-                new SqlParameter("@name", goodsName)
+                new SqlParameter("@id", id),
+                new SqlParameter("@name", name)
             };
             // Get good's info with good's id given
-            var good = context.Database.SqlQuery<Good>("Sp_Goods_ListGood @id, @name", sqlParams).ToList();
-            return good;
+            var item = context.Database.SqlQuery<Good>("Sp_Goods_ListGood @id, @name", sqlParams).ToList();
+            return item;
+        }
+        // ------------------- Customer -------------------
+        public List<Customer> ListAll_Customer()
+        {
+            // List all customers' info to Customer Table
+            var list = context.Database.SqlQuery<Customer>("Sp_Customer_ListAll").ToList();
+            return list;
+        }
+        public List<Customer> ListSingle_Customer(int id)
+        {
+            var customer = context.Database.SqlQuery<Customer>("Sp_Customer_ListCustomer @id", new SqlParameter("@id", id)).ToList();
+            return customer;
         }
         // ------------------- Employee -------------------
         public List<Employee> ListAll_Employee()
@@ -40,11 +52,11 @@ namespace DB_Models
             var list = context.Database.SqlQuery<Employee>("Sp_Employee_ListAll").ToList();
             return list;
         }
-        public List<Employee> ListSingle_Employee(int employeeId)
+        public List<Employee> ListSingle_Employee(int id)
         {
             // Get employee's info to display on EmployeeEdit form
-            var employee = context.Database.SqlQuery<Employee>("Sp_Employee_ListEmployee @id", new SqlParameter("@id",employeeId)).ToList();
-            return employee;
+            var item = context.Database.SqlQuery<Employee>("Sp_Employee_ListEmployee @id", new SqlParameter("@id",id)).ToList();
+            return item;
         }
         // ------------------- Category -------------------
         public List<Category> ListAll_Category()
@@ -59,15 +71,20 @@ namespace DB_Models
                 new SqlParameter("@id", id),
                 new SqlParameter("@name", name)
             };
-            // Get good's info with good's id given
-            var category = context.Database.SqlQuery<Category>("Sp_Goods_ListCategory @id, @name", sqlParams).ToList();
-            return category;
+            var item = context.Database.SqlQuery<Category>("Sp_Category_ListCategory @id, @name", sqlParams).ToList();
+            return item;
         }
         // ------------------- Supplier -------------------
         public List<Supplier> ListAll_Supplier()
         {
             var list = context.Database.SqlQuery<Supplier>("Sp_Supplier_ListAll").ToList();
             return list;
+        }
+        public List<Supplier> ListSingle_Supplier(int id)
+        {
+            // Get employee's info to display on EmployeeEdit form
+            var item = context.Database.SqlQuery<Supplier>("Sp_Supplier_ListSupplier @id", new SqlParameter("@id", id)).ToList();
+            return item;
         }
         // ------------------- Import Info -------------------
         public List<Import_Info> ListAll_ImportInfo()
@@ -76,16 +93,33 @@ namespace DB_Models
             var list = context.Database.SqlQuery<Import_Info>("Sp_ImportInfo_ListAll").ToList();
             return list;
         }
-        public List<Import_Info> ListSingle_ImportInfo(int importInfoId, DB_ex1_Context con)
+        public List<Import_Info> ListSingle_ImportInfo(int id, DB_ex1_Context con)
         {
-            var info = con.Database.SqlQuery<Import_Info>("Sp_ImportInfo_ListImportInfo @id", new SqlParameter("@id", importInfoId)).ToList();
-            return info;
+            var item = con.Database.SqlQuery<Import_Info>("Sp_ImportInfo_ListImportInfo @id", new SqlParameter("@id", id)).ToList();
+            return item;
         }
         // ------------------- Import Goods -------------------
-        public List<Import_Goods> ListImportGoods(int importInfoId, DB_ex1_Context con)
+        public List<Import_Goods> ListImportGoods(int id, DB_ex1_Context con)
         {
-            var importGoods = con.Database.SqlQuery<Import_Goods>("Sp_ImportGoods_ListImportGoods @infoId", new SqlParameter("@infoId", importInfoId)).ToList();
-            return importGoods;
+            var list = con.Database.SqlQuery<Import_Goods>("Sp_ImportGoods_ListImportGoods @infoId", new SqlParameter("@infoId", id)).ToList();
+            return list;
+        }
+        // ------------------- Export Info -------------------
+        public List<Export_Info> ListAll_ExportInfo()
+        {
+            var list = context.Database.SqlQuery<Export_Info>("Sp_ExportInfo_ListAll").ToList();
+            return list;
+        }
+        public List<Export_Info> ListSingle_ExportInfo(int id, DB_ex1_Context con)
+        {
+            var item = con.Database.SqlQuery<Export_Info>("Sp_ExportInfo_ListExportInfo @id", new SqlParameter("@id", id)).ToList();
+            return item;
+        }
+        // ------------------- Export Goods -------------------
+        public List<Export_Goods> ListExportGoods(int id, DB_ex1_Context con)
+        {
+            var list = con.Database.SqlQuery<Export_Goods>("Sp_ExportGoods_ListExportGoods @infoId", new SqlParameter("@infoId", id)).ToList();
+            return list;
         }
     }
 }

@@ -27,35 +27,27 @@ namespace DB_ex1.AddForms
                 ddCreateBy.DataSource = list;
                 ddCreateBy.DataTextField = "FullName";
                 ddCreateBy.DataBind();
-                ddCreateBy.Items.Insert(0, new ListItem("-Select-", "0"));
-
+                ddCreateBy.Items.Insert(0, "-Select-");
             }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (ddCreateBy.SelectedItem.Text != "-Select-")
+            InsertModel model = new InsertModel();
+            Employee employee = new Employee
             {
-                InsertModel model = new InsertModel();
-                Employee employee = new Employee();
 
                 // Get info and pass into an Employee object before passing into InsertEmployee method
-                employee.FirstName = firstName.Text;
-                employee.LastName = lastName.Text;
-                employee.Position = position.Text;
-                employee.EmployeeCode = code.Text;
-                employee.PhoneNumber = phoneNumber.Text;
-                employee.EmployeeAddress = employeeAddress.Text;
-                employee.CreateBy = ddCreateBy.SelectedItem.Text;
-                model.InsertEmployee(employee);
-                // Redirect to Employee Table after successful update.
-                Response.Redirect("/Management/EmployeeManagement.aspx");
-            }
-            else
-            {
-                ddError.Text = "This field is required";
-                ddError.ForeColor = System.Drawing.Color.Red;
-            }
+                FirstName = firstName.Text,
+                LastName = lastName.Text,
+                Position = position.Text,
+                EmployeeCode = code.Text,
+                PhoneNumber = phoneNumber.Text,
+                EmployeeAddress = employeeAddress.Text,
+                CreateBy = ddCreateBy.SelectedItem.Text
+            };
+            model.InsertEmployee(employee);
+            // Redirect to Employee Table after successful update.
+            Response.Redirect("/Management/EmployeeManagement.aspx");
         }
-        
     }
 }
