@@ -69,13 +69,22 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.TextBox score;
 
         /// <summary>
-        /// ddCreateBy control.
+        /// idErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
+        protected global::System.Web.UI.WebControls.Label idErr;
+
+        /// <summary>
+        /// createBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox createBy;
 
         /// <summary>
         /// SaveButton control.

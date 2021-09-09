@@ -11,56 +11,51 @@ namespace DB_ex1.AddForms
 {
     public partial class GoodAdd : System.Web.UI.Page
     {
+        ListModel listModel = new ListModel();
+        InsertModel insertModel = new InsertModel();
+        CheckModel checkModel = new CheckModel();
+        BindModel bindModel = new BindModel();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                LoadDropdowns();
+                LoadDropdown();
             }
 
         }
-        protected void LoadDropdowns()
+        protected void LoadDropdown()
         {
-            ListModel model = new ListModel();
-            List<Category> cat = model.ListAll_Category();
-            if (cat != null)
-            {
-                ddCategory.DataSource = cat;
-                ddCategory.DataTextField = "categoryName";
-                ddCategory.DataBind();
-                ddCategory.Items.Insert(0,"-Select-");
-            }
-            // Load Employee list to CreateBy dropdown
-            List<Employee> list = model.ListAll_Employee();
-            if (list != null)
-            {
-                ddCreateBy.DataSource = list;
-                ddCreateBy.DataTextField = "FullName";
-                ddCreateBy.DataBind();
-                ddCreateBy.Items.Insert(0, "-Select-");
-
-            }
+            List<Category> list = listModel.ListCategory(0,"");
+            bindModel.BindInstance(list, ddCategory, "", 0);            
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            InsertModel model = new InsertModel();
-            Good good = new Good
+            string emId = createBy.Text.ToUpper();
+            if (checkModel.CheckCharID(emId) == true)
             {
 
-                // Get info and pass into an Good object before passing into InsertGood method
-                GoodsName = goodsName.Text,
-                GoodsCode = barcode.Text,
-                ImportPrice = Convert.ToDouble(importPrice.Text),
-                MinQuantity = Convert.ToInt32(minQty.Text),
-                GoodsQuantity = Convert.ToInt32(Qty.Text),
-                TaxPercent = Convert.ToDouble(tax.Text),
-                CreateBy = ddCreateBy.SelectedItem.Text,
-                categoryName = ddCategory.SelectedItem.Text
-            };
-            model.InsertGood(good);
+                Good good = new Good
+                {
 
-            // Redirect to Good Table after successful update.
-            Response.Redirect("/Management/GoodManagement.aspx");
+                    // Get info and pass into an Good object before passing into InsertGood method
+                    Name = goodsName.Text,
+                    Barcode = barcode.Text,
+                    ImportPrice = Convert.ToDouble(importPrice.Text),
+                    MinQuantity = Convert.ToInt32(minQty.Text),
+                    Quantity = Convert.ToInt32(Qty.Text),
+                    Tax = Convert.ToDouble(tax.Text),
+                    CreateBy = emId,
+                    CategoryName = ddCategory.SelectedItem.Text
+                };
+                insertModel.InsertGood(good);
+
+                // Redirect to Good Table after successful update.
+                Response.Redirect("/Management/GoodManagement.aspx");
+            }
+            else
+            {
+                idErr.Text = "Invalid ID";
+            }
         }
     }
 }

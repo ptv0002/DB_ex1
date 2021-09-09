@@ -12,10 +12,10 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField = "Id" HeaderText= "ID" ReadOnly="True"/>
-            <asp:BoundField DataField = "SupplierName" HeaderText= "Supplier name" ReadOnly= "True" />
-            <asp:BoundField DataField = "SupplierStatus" HeaderText= "Status" ReadOnly= "True" />
+            <asp:BoundField DataField = "Name" HeaderText= "Supplier name" ReadOnly= "True" />
+            <asp:BoundField DataField = "Status" HeaderText= "Status" ReadOnly= "True" />
             <asp:BoundField DataField = "PhoneNumber" HeaderText= "Phone number" ReadOnly= "True" />
-            <asp:BoundField DataField = "SupplierAddress" HeaderText= "Address" ReadOnly= "True" />
+            <asp:BoundField DataField = "Address" HeaderText= "Address" ReadOnly= "True" />
             <asp:BoundField DataField = "CreateDate" HeaderText= "Create date" ReadOnly= "True" />
             <asp:BoundField DataField = "CreateBy" HeaderText= "Create by" ReadOnly= "True" />
             <asp:BoundField DataField = "UpdateDate" HeaderText= "Update date" ReadOnly= "True" />

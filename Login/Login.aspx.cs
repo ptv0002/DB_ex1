@@ -16,9 +16,9 @@ namespace DB_ex1.Login
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            AccountModel accountModel = new AccountModel();
+            CheckModel checkModel = new CheckModel();
             // Check if combo of username and password is in the database
-            var res = accountModel.Login(username.Text,password.Text);
+            var res = checkModel.Login(username.Text,password.Text);
             if (res)
             {
                 // Redirect to default page if login is successful

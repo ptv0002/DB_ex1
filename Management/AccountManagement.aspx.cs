@@ -20,8 +20,8 @@ namespace DB_ex1.Management
         }
         protected void LoadGridAccount()
         {
-            AccountModel model = new AccountModel();
-            List<Account> list = model.ListAll();
+            ListModel model = new ListModel();
+            List<Account> list = model.ListAccount();
             if (list != null)
             {
                 gv.DataSource = list;

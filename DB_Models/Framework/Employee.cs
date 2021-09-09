@@ -26,17 +26,17 @@ namespace DB_Models.Framework
         public string LastName { get; set; }
         [StringLength(50)]
         public string FullName { get; set; }
-        public bool EmployeeStatus { get; set; }
+        public bool Status { get; set; }
 
         [StringLength(20)]
         public string PhoneNumber { get; set; }
 
         [StringLength(100)]
-        public string EmployeeAddress { get; set; }
+        public string Address { get; set; }
         [StringLength(20)]
         public string Position { get; set; }
         [StringLength(10)]
-        public string EmployeeCode { get; set; }
+        public string CharID { get; set; }
 
         public DateTime CreateDate { get; set; }
 

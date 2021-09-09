@@ -208,6 +208,13 @@
     <Compile Include="EditForms\SupplierEdit.aspx.designer.cs">
       <DependentUpon>SupplierEdit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Empty.Master.cs">
+      <DependentUpon>Empty.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empty.Master.designer.cs">
+      <DependentUpon>Empty.Master</DependentUpon>
+    </Compile>
     <Compile Include="Login\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,19 +229,19 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login\ResetPassword.aspx.cs">
-      <DependentUpon>ResetPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login\ResetPassword.aspx.designer.cs">
-      <DependentUpon>ResetPassword.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Management\AccountManagement.aspx.cs">
       <DependentUpon>AccountManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Management\AccountManagement.aspx.designer.cs">
       <DependentUpon>AccountManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\CardManagement.aspx.cs">
+      <DependentUpon>CardManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Management\CardManagement.aspx.designer.cs">
+      <DependentUpon>CardManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Management\CategoryManagement.aspx.cs">
       <DependentUpon>CategoryManagement.aspx</DependentUpon>
@@ -336,8 +343,8 @@
     <Content Include="EditForms\SupplierEdit.aspx" />
     <Content Include="Login\Register.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Login\ResetPassword.aspx" />
     <Content Include="Management\AccountManagement.aspx" />
+    <Content Include="Management\CardManagement.aspx" />
     <Content Include="Management\CategoryManagement.aspx" />
     <Content Include="Management\CustomerManagement.aspx" />
     <Content Include="Management\EmployeeManagement.aspx" />
@@ -354,6 +361,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Main.Master" />
     <Content Include="Login.Master" />
+    <Content Include="Empty.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

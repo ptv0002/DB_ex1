@@ -1,21 +1,15 @@
-﻿using DB_Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DB_ex1.Login
+namespace DB_ex1
 {
-    public partial class ResetPassword : System.Web.UI.Page
+    public partial class Empty : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
         {
 
         }

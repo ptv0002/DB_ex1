@@ -42,6 +42,24 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.DropDownList ddSupplier;
 
         /// <summary>
+        /// phone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label phone;
+
+        /// <summary>
+        /// address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label address;
+
+        /// <summary>
         /// ddPaymentStatus control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace DB_ex1.AddForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddPaymentStatus;
+
+        /// <summary>
+        /// otherDiscount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox otherDiscount;
 
         /// <summary>
         /// paymentType control.
@@ -60,22 +87,31 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.TextBox paymentType;
 
         /// <summary>
-        /// totalImport control.
+        /// idErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label totalImport;
+        protected global::System.Web.UI.WebControls.Label idErr;
 
         /// <summary>
-        /// ddCreateBy control.
+        /// total control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
+        protected global::System.Web.UI.WebControls.Label total;
+
+        /// <summary>
+        /// createBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox createBy;
 
         /// <summary>
         /// gv control.
@@ -87,21 +123,48 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.GridView gv;
 
         /// <summary>
-        /// SaveButton control.
+        /// emptyTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveButton;
+        protected global::System.Web.UI.WebControls.Table emptyTable;
 
         /// <summary>
-        /// CancelButton control.
+        /// ddGoodsEmpty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CancelButton;
+        protected global::System.Web.UI.WebControls.DropDownList ddGoodsEmpty;
+
+        /// <summary>
+        /// qtyEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox qtyEmpty;
+
+        /// <summary>
+        /// priceEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox priceEmpty;
+
+        /// <summary>
+        /// discountEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox discountEmpty;
     }
 }

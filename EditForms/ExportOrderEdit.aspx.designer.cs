@@ -42,13 +42,22 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.DropDownList ddCustomer;
 
         /// <summary>
-        /// cardType control.
+        /// phone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label cardType;
+        protected global::System.Web.UI.WebControls.Label phone;
+
+        /// <summary>
+        /// address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label address;
 
         /// <summary>
         /// ddPaymentStatus control.
@@ -60,6 +69,15 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.DropDownList ddPaymentStatus;
 
         /// <summary>
+        /// ddCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddCard;
+
+        /// <summary>
         /// paymentType control.
         /// </summary>
         /// <remarks>
@@ -67,15 +85,6 @@ namespace DB_ex1.EditForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox paymentType;
-
-        /// <summary>
-        /// updateScore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label updateScore;
 
         /// <summary>
         /// orderScore control.
@@ -87,40 +96,49 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.Label orderScore;
 
         /// <summary>
-        /// totalExport control.
+        /// newScore control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label totalExport;
+        protected global::System.Web.UI.WebControls.Label newScore;
 
         /// <summary>
-        /// discount control.
+        /// total control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label discount;
+        protected global::System.Web.UI.WebControls.Label total;
 
         /// <summary>
-        /// newTotalExport control.
+        /// otherDiscount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label newTotalExport;
+        protected global::System.Web.UI.WebControls.TextBox otherDiscount;
 
         /// <summary>
-        /// ddUpdateBy control.
+        /// idErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUpdateBy;
+        protected global::System.Web.UI.WebControls.Label idErr;
+
+        /// <summary>
+        /// updateBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox updateBy;
 
         /// <summary>
         /// gv control.
@@ -130,23 +148,5 @@ namespace DB_ex1.EditForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gv;
-
-        /// <summary>
-        /// SaveButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SaveButton;
-
-        /// <summary>
-        /// CancelButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CancelButton;
     }
 }

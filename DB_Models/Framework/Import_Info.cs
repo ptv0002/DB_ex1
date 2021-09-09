@@ -16,11 +16,13 @@ namespace DB_Models.Framework
 
         [Key]
         public int Id { get; set; }
-        
-        [StringLength(50)]
+        public int SupplierId { get; set; }
+        [StringLength(100)]
         public string SupplierName { get; set; }
 
-        public double TotalImport { get; set; }
+        public double Total { get; set; }
+
+        public double OtherDiscount { get; set; }
 
         public bool PaymentStatus { get; set; }
 

@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
     <asp:LinkButton runat="server" ForeColor="#333333" BorderWidth="10" BorderColor="Transparent" href="/AddForms/GoodAdd.aspx">Add</asp:LinkButton>
-    <asp:GridView ID="gv" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both">
+    <asp:GridView ID="gv" runat="server" AutoGenerateColumns="false" Width="100%" CellPadding="4" AllowPaging="true" ForeColor="#333333" GridLines="Both" OnRowDataBound="gv_RowDataBound">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
@@ -12,15 +12,15 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" />
-            <asp:BoundField DataField="categoryName" HeaderText="Category" ReadOnly="True" />
-            <asp:BoundField DataField="GoodsName" HeaderText="Name" ReadOnly="True" />
-            <asp:BoundField DataField="GoodsStatus" HeaderText="Status" ReadOnly="True" />
-            <asp:BoundField DataField="GoodsCode" HeaderText="Bar Code" ReadOnly="True" />
+            <asp:BoundField DataField="Name" HeaderText="Name" ReadOnly="True" />
+            <asp:BoundField DataField="CategoryName" HeaderText="Category" ReadOnly="True" />
+            <asp:BoundField DataField="Status" HeaderText="Status" ReadOnly="True" />
+            <asp:BoundField DataField="Barcode" HeaderText="Barcode" ReadOnly="True" />
             <asp:BoundField DataField="MinQuantity" HeaderText="Min Quantity" ReadOnly="True" />
-            <asp:BoundField DataField="GoodsQuantity" HeaderText="Quantity" ReadOnly="True" />
+            <asp:BoundField DataField="Quantity" HeaderText="Quantity" ReadOnly="True" />
             <asp:BoundField DataField="ImportPrice" HeaderText="Import Price" ReadOnly="True" />
             <asp:BoundField DataField="SalePrice" HeaderText="Sale Price" ReadOnly="True" />
-            <asp:BoundField DataField="TaxPercent" HeaderText="Tax Percent" ReadOnly="True" />
+            <asp:BoundField DataField="Tax" HeaderText="Tax" ReadOnly="True" />
             <asp:BoundField DataField="CreateDate" HeaderText="Create date" ReadOnly="True" />
             <asp:BoundField DataField="CreateBy" HeaderText="Create by" ReadOnly="True" />
             <asp:BoundField DataField="UpdateDate" HeaderText="Update date" ReadOnly="True" />

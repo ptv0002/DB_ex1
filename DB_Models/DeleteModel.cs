@@ -19,5 +19,9 @@ namespace DB_Models
         {
             con.Database.ExecuteSqlCommand("Sp_ImportGoods_Delete @id", new SqlParameter("@id", id));
         }
+        public void DeleteExport(int id, DB_ex1_Context con)
+        {
+            con.Database.ExecuteSqlCommand("Sp_ExportGoods_Delete @id", new SqlParameter("@id", id));
+        }
     }
 }

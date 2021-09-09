@@ -22,7 +22,7 @@ namespace DB_ex1.Management
         protected void LoadGridEmployee()
         {
             ListModel model = new ListModel();
-            List<Employee> list = model.ListAll_Employee();
+            List<Employee> list = model.ListEmployee(0);
             if(list != null)
             {
                 gv.DataSource = list;

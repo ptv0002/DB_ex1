@@ -10,37 +10,28 @@ namespace DB_Models.Framework
     {
         public Export_Info()
         {
-            InOut_Goods = new HashSet<Import_Goods>();
+            Export_Goods = new HashSet<Export_Goods>();
         }
 
         [Key]
         public int Id { get; set; }
-
-        public string CustomerFullName { get; set; }
-
+        public int CustomerId { get; set; }
+        public string CustomerName { get; set; }
         public double TransactionScore { get; set; }
-
-        public double TotalExport { get; set; }
-
+        public bool CardDiscount { get; set; } 
+        public double Total { get; set; }
+        public double OtherDiscount { get; set; }
         public bool PaymentStatus { get; set; }
-
         [StringLength(50)]
         public string PaymentType { get; set; }
-
         public DateTime CreateDate { get; set; }
-
         [StringLength(50)]
         public string CreateBy { get; set; }
-
         public DateTime? UpdateDate { get; set; }
-
         [StringLength(50)]
         public string UpdateBy { get; set; }
-
         public virtual Customer Customer { get; set; }
-
         public virtual Employee Employee { get; set; }
-
-        public virtual ICollection<Import_Goods> InOut_Goods { get; set; }
+        public virtual ICollection<Export_Goods> Export_Goods { get; set; }
     }
 }

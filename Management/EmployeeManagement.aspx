@@ -12,13 +12,13 @@
                     <asp:LinkButton ForeColor="#333333" runat="server" href='<%#"/EditForms/EmployeeEdit.aspx?Id="+DataBinder.Eval(Container.DataItem,"Id") %>'>Edit</asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" />
+            <asp:BoundField DataField="Id" ReadOnly="True" Visible="false"/>
+            <asp:BoundField DataField="CharID" HeaderText="ID" ReadOnly="True" />
             <asp:BoundField DataField="FirstName" HeaderText="First name" ReadOnly="True" />
             <asp:BoundField DataField="LastName" HeaderText="Last name" ReadOnly="True" />
             <asp:BoundField DataField="Position" HeaderText="Position" ReadOnly="True" />
-            <asp:BoundField DataField="EmployeeCode" HeaderText="Code" ReadOnly="True" />
-            <asp:BoundField DataField="EmployeeStatus" HeaderText="Status" ReadOnly="True" />
-            <asp:BoundField DataField="EmployeeAddress" HeaderText="Address" ReadOnly="True" />
+            <asp:BoundField DataField="Status" HeaderText="Status" ReadOnly="True" />
+            <asp:BoundField DataField="Address" HeaderText="Address" ReadOnly="True" />
             <asp:BoundField DataField="PhoneNumber" HeaderText="Phone number" ReadOnly="True" />
             <asp:BoundField DataField="CreateDate" HeaderText="Create date" ReadOnly="True" />
             <asp:BoundField DataField="CreateBy" HeaderText="Create by" ReadOnly="True" />

@@ -14,9 +14,9 @@
             <asp:BoundField DataField = "Id" HeaderText= "ID" ReadOnly="True"/>
             <asp:BoundField DataField = "FirstName" HeaderText= "First name" ReadOnly= "True" />
             <asp:BoundField DataField = "LastName" HeaderText= "Last name" ReadOnly= "True" />
-            <asp:BoundField DataField = "CustomerStatus" HeaderText= "Status" ReadOnly= "True" />
+            <asp:BoundField DataField = "Status" HeaderText= "Status" ReadOnly= "True" />
             <asp:BoundField DataField = "PhoneNumber" HeaderText= "Phone number" ReadOnly= "True" />
-            <asp:BoundField DataField = "CustomerAddress" HeaderText= "Address" ReadOnly= "True" />
+            <asp:BoundField DataField = "Address" HeaderText= "Address" ReadOnly= "True" />
             <asp:BoundField DataField = "CitizenId" HeaderText= "Citizen ID" ReadOnly= "True" />
             <asp:BoundField DataField = "MembershipScore" HeaderText= "Membership Score" ReadOnly= "True" />
             <asp:BoundField DataField = "CreateDate" HeaderText= "Create date" ReadOnly= "True" />

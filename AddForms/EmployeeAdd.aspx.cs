@@ -11,43 +11,46 @@ namespace DB_ex1.AddForms
 {
     public partial class EmployeeAdd : System.Web.UI.Page
     {
+        InsertModel insertModel = new InsertModel();
+        CheckModel checkModel = new CheckModel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                LoadDropDown();
-            }
-        }
-        protected void LoadDropDown()
-        {
-            ListModel model = new ListModel();
-            List<Employee> list = model.ListAll_Employee();
-            if (list != null)
-            {
-                ddCreateBy.DataSource = list;
-                ddCreateBy.DataTextField = "FullName";
-                ddCreateBy.DataBind();
-                ddCreateBy.Items.Insert(0, "-Select-");
-            }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            InsertModel model = new InsertModel();
-            Employee employee = new Employee
+            string byId = createBy.Text.ToUpper();
+            string emId = code.Text.ToUpper();
+            if (checkModel.CheckCharID(byId) == true && checkModel.CheckCharID(emId) == false)
             {
+                Employee employee = new Employee
+                {
 
-                // Get info and pass into an Employee object before passing into InsertEmployee method
-                FirstName = firstName.Text,
-                LastName = lastName.Text,
-                Position = position.Text,
-                EmployeeCode = code.Text,
-                PhoneNumber = phoneNumber.Text,
-                EmployeeAddress = employeeAddress.Text,
-                CreateBy = ddCreateBy.SelectedItem.Text
-            };
-            model.InsertEmployee(employee);
-            // Redirect to Employee Table after successful update.
-            Response.Redirect("/Management/EmployeeManagement.aspx");
+                    // Get info and pass into an Employee object before passing into InsertEmployee method
+                    FirstName = firstName.Text,
+                    LastName = lastName.Text,
+                    Position = position.Text,
+                    CharID = emId,
+                    PhoneNumber = phoneNumber.Text,
+                    Address = employeeAddress.Text,
+                    CreateBy = byId
+                };
+                insertModel.InsertEmployee(employee);
+                // Redirect to Employee Table after successful update.
+                Response.Redirect("/Management/EmployeeManagement.aspx");
+            }
+            else if (checkModel.CheckCharID(byId) == false && checkModel.CheckCharID(emId) == false)
+            {
+                byErr.Text = "Invalid ID";
+            }
+            else if (checkModel.CheckCharID(byId) == true && checkModel.CheckCharID(emId) == true)
+            {
+                idErr.Text = "ID is taken";
+            }
+            else
+            {
+                byErr.Text = "Invalid ID";
+                idErr.Text = "ID is taken";
+            }
         }
     }
 }

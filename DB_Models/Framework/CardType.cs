@@ -11,20 +11,19 @@ namespace DB_Models.Framework
     {
         public CardType()
         {
-            Customers = new HashSet<Customer>();
+
         }
 
         public int Id { get; set; }
 
         [Column("CardType")]
         [StringLength(10)]
-        public string CardType1 { get; set; }
+        public string Name { get; set; }
 
-        public int PercentDiscount { get; set; }
+        public double? PercentDiscount { get; set; }
 
-        public double DecreaseBy { get; set; }
-
-        public int LowerBound { get; set; }
+        public bool Status { get; set; }
+        public double LowerBound { get; set; }
 
         public DateTime CreateDate { get; set; }
 
@@ -36,6 +35,5 @@ namespace DB_Models.Framework
         [StringLength(50)]
         public string UpdateBy { get; set; }
 
-        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

@@ -33,6 +33,15 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.TextBox lastName;
 
         /// <summary>
+        /// idErr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idErr;
+
+        /// <summary>
         /// position control.
         /// </summary>
         /// <remarks>
@@ -69,13 +78,22 @@ namespace DB_ex1.AddForms
         protected global::System.Web.UI.WebControls.TextBox employeeAddress;
 
         /// <summary>
-        /// ddCreateBy control.
+        /// byErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddCreateBy;
+        protected global::System.Web.UI.WebControls.Label byErr;
+
+        /// <summary>
+        /// createBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox createBy;
 
         /// <summary>
         /// SaveButton control.

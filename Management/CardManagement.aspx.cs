@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace DB_ex1.Management
 {
-    public partial class CategoryManagement : System.Web.UI.Page
+    public partial class CardManagement : System.Web.UI.Page
     {
         UpdateModel updateModel = new UpdateModel();
         InsertModel insertModel = new InsertModel();
@@ -22,12 +22,11 @@ namespace DB_ex1.Management
             if (!IsPostBack)
             {
                 LoadGrid();
-                idCreateErr.Text = null;
             }
         }
         protected void LoadGrid()
         {
-            List<Category> list = listModel.ListCategory(0,"");
+            List<CardType> list = listModel.ListCardType(0);
             if (list != null)
             {
                 gv.DataSource = list;
@@ -39,15 +38,17 @@ namespace DB_ex1.Management
             string emId = createBy.Text.ToUpper();
             if (checkModel.CheckCharID(emId) == true)
             {
-                Category category = new Category
+                CardType item = new CardType
                 {
-                    // Get info and pass into a Category object before passing into InsertCategory method
+                    // Get info and pass into a CardType object before passing into InsertCardType method
                     Name = addName.Text,
+                    LowerBound = Convert.ToDouble(addBound.Text),
+                    PercentDiscount = Convert.ToDouble(addPercent.Text),
                     CreateBy = emId
                 };
-                insertModel.InsertCategory(category);
-                // Redirect to Category Table after successful update.
-                Response.Redirect("CategoryManagement.aspx");
+                insertModel.InsertCardType(item);
+                // Redirect to CardType Table after successful update.
+                Response.Redirect("CardManagement.aspx");
             }
             else
             {
@@ -60,15 +61,17 @@ namespace DB_ex1.Management
             string emId = updateBy.Text.ToUpper();
             if (checkModel.CheckCharID(emId) == true)
             {
-                Category item = new Category
+                CardType item = new CardType
                 {
                     Id = Convert.ToInt32(cId.Text),
                     Name = editName.Text,
                     Status = Convert.ToBoolean(ddStatus.SelectedValue),
+                    LowerBound = Convert.ToDouble(editBound.Text),
+                    PercentDiscount = Convert.ToDouble(editPercent.Text),
                     UpdateBy = emId
                 };
-                updateModel.UpdateCategory(item);
-                Response.Redirect("CategoryManagement.aspx");
+                updateModel.UpdateCardType(item);
+                Response.Redirect("CardManagement.aspx");
             }
             else
             {
@@ -76,18 +79,19 @@ namespace DB_ex1.Management
                 Popup(true);
             }
         }
-
         protected void Edit_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             // Get DB id
             int id = Convert.ToInt32(e.CommandArgument);
             // Get item info from Database
-            var item = listModel.ListCategory(id,"");
+            var item = listModel.ListCardType(id);
 
             // Bind values into popup
             cId.Text = id.ToString();
             editName.Text = item.ElementAt(0).Name;
-            
+            editBound.Text = item.ElementAt(0).LowerBound.ToString();
+            editPercent.Text = item.ElementAt(0).PercentDiscount.ToString();
+
             bindModel.BindStatus(ddStatus, "Active", "Inactive", item.ElementAt(0).Status);
             // Reset error message for ddUpdateBy
             idUpdateErr.Text = null;
@@ -108,5 +112,6 @@ namespace DB_ex1.Management
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "ShowPopup", builder.ToString());
             }
         }
+        
     }
 }

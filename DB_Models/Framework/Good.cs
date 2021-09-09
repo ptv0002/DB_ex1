@@ -19,26 +19,26 @@ namespace DB_Models.Framework
         [Key]
         public int Id { get; set; }
         [StringLength(50)]
-        public string categoryName { get; set; }
+        public string CategoryName { get; set; }
 
         [StringLength(50)]
         [Required]
-        public string GoodsName { get; set; }
+        public string Name { get; set; }
 
-        public bool GoodsStatus { get; set; }
+        public bool Status { get; set; }
 
         [StringLength(20)]
-        public string GoodsCode { get; set; }
+        public string Barcode { get; set; }
 
         public int MinQuantity { get; set; }
 
-        public int GoodsQuantity { get; set; }
+        public int Quantity { get; set; }
 
         public double ImportPrice { get; set; }
 
         public double? SalePrice { get; set; }
 
-        public double TaxPercent { get; set; }
+        public double Tax { get; set; }
 
         public DateTime CreateDate { get; set; }
 

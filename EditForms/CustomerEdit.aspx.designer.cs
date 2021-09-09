@@ -78,13 +78,22 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.TextBox score;
 
         /// <summary>
-        /// ddUpdateBy control.
+        /// idErr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUpdateBy;
+        protected global::System.Web.UI.WebControls.Label idErr;
+
+        /// <summary>
+        /// updateBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox updateBy;
 
         /// <summary>
         /// ddStatus control.

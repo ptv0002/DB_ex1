@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cpHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    <h1> Hello, this is Home Page!</h1>
+    <asp:Label runat="server" Font-Size="XX-Large">Welcome to Veronica's Inventory Website!</asp:Label>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cpScript" runat="server">
 </asp:Content>

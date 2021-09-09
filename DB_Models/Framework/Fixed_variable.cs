@@ -12,11 +12,11 @@ namespace DB_Models.Framework
         public int Id { get; set; }
 
         [StringLength(20)]
-        public string VariableName { get; set; }
+        public string Name { get; set; }
 
-        public float VariableValue { get; set; }
+        public float Value { get; set; }
 
-        public bool VariableStatus { get; set; }
+        public bool Status { get; set; }
 
         public DateTime CreateDate { get; set; }
 

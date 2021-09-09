@@ -11,80 +11,62 @@ namespace DB_ex1.EditForms
 {
     public partial class EmployeeEdit : System.Web.UI.Page
     {
-        private static int emId;
+        private static int employeeId;
+        UpdateModel updateModel = new UpdateModel();
+        ListModel listModel = new ListModel();
+        CheckModel checkModel = new CheckModel();
+        BindModel bindModel = new BindModel();
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get employee ID from Employee Table and pass to the Edit form
-            emId = Convert.ToInt32(Request.QueryString["Id"].ToString());
+            employeeId = Convert.ToInt32(Request.QueryString["Id"].ToString());
             if (!IsPostBack)
             {
-                BindControlValues(emId);
+                BindControlValues(employeeId);
             }
         }
         protected void BindControlValues (int Id)
         {
             ListModel model = new ListModel();
-            List<Employee> item = model.ListSingle_Employee(Id);
-            List<Employee> all = model.ListAll_Employee();
-            // Load to ddUpdateBy
-            if (all != null)
-            {
-                ddUpdateBy.DataSource = all;
-                ddUpdateBy.DataTextField = "FullName";
-                ddUpdateBy.DataBind();
-                ddUpdateBy.Items.Insert(0, "-Select-");
-            }     
+            List<Employee> item = model.ListEmployee(Id);   
             
             // Display the employee's info into the textboxes 
-            eId.Text = Id.ToString();
+            eId.Text = item.ElementAt(0).CharID;
             firstName.Text = item.ElementAt(0).FirstName;
             lastName.Text = item.ElementAt(0).LastName;
             position.Text = item.ElementAt(0).Position;
-            code.Text = item.ElementAt(0).EmployeeCode;
             phoneNumber.Text = item.ElementAt(0).PhoneNumber;
-            address.Text = item.ElementAt(0).EmployeeAddress;
+            address.Text = item.ElementAt(0).Address;
 
-            BindStatus(ddStatus, "Active", "Inactive", item.ElementAt(0).EmployeeStatus);
+            bindModel.BindStatus(ddStatus, "Active", "Inactive", item.ElementAt(0).Status);
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            UpdateModel model = new UpdateModel();
-            Employee item = new Employee
+            string emId = updateBy.Text.ToUpper();
+            if (checkModel.CheckCharID(emId) == true)
             {
+                Employee item = new Employee
+                {
 
-                // Get updated info and pass into an Employee object before passing into UpdateEmployee method
-                Id = Convert.ToInt32(eId.Text),
-                FirstName = firstName.Text,
-                LastName = lastName.Text,
-                Position = position.Text,
-                EmployeeCode = code.Text,
-                PhoneNumber = phoneNumber.Text,
-                EmployeeAddress = address.Text,
-                EmployeeStatus = Convert.ToBoolean(ddStatus.SelectedValue),
-                UpdateBy = ddUpdateBy.SelectedItem.Text
-            };
-            model.UpdateEmployee(item);
-            // Redirect to Employee Table after successful update.
-            Response.Redirect("/Management/EmployeeManagement.aspx");
-        }
-        public void BindStatus(DropDownList dd, string trueText, string falseText, bool status)
-        {
-            string text;
-            string value;
-            if (status == true)
-            {
-                text = trueText;
-                value = "true";
+                    // Get updated info and pass into an Employee object before passing into UpdateEmployee method
+                    Id = employeeId,
+                    FirstName = firstName.Text,
+                    LastName = lastName.Text,
+                    Position = position.Text,
+                    CharID = eId.Text,
+                    PhoneNumber = phoneNumber.Text,
+                    Address = address.Text,
+                    Status = Convert.ToBoolean(ddStatus.SelectedValue),
+                    UpdateBy = emId
+                };
+                updateModel.UpdateEmployee(item);
+                // Redirect to Employee Table after successful update.
+                Response.Redirect("/Management/EmployeeManagement.aspx");
             }
             else
             {
-                text = falseText;
-                value = "false";
+                idErr.Text = "Invalid ID";
             }
-
-            dd.Items.Insert(0, new ListItem(text, value.ToString()));
-            dd.Items.Insert(1, new ListItem(trueText, "true"));
-            dd.Items.Insert(2, new ListItem(falseText, "false"));
         }
     }
 }

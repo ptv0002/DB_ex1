@@ -17,9 +17,9 @@ namespace DB_Models.Framework
         public int Id { get; set; }
 
         [StringLength(50)]
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
 
-        public bool CategoryStatus { get; set; }
+        public bool Status { get; set; }
 
         public DateTime CreateDate { get; set; }
 

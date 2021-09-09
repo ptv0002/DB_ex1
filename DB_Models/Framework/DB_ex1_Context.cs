@@ -44,7 +44,7 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<CardType>()
-                .Property(e => e.CardType1)
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CardType>()
@@ -68,7 +68,7 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer>()
-                .Property(e => e.CustomerAddress)
+                .Property(e => e.Address)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer>()
@@ -96,7 +96,7 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Employee>()
-                .Property(e => e.EmployeeAddress)
+                .Property(e => e.Address)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Employee>()
@@ -120,7 +120,7 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Fixed_variable>()
-                .Property(e => e.VariableName)
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Fixed_variable>()
@@ -132,11 +132,11 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Good>()
-                .Property(e => e.GoodsName)
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Good>()
-                .Property(e => e.GoodsCode)
+                .Property(e => e.Barcode)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Good>()
@@ -148,7 +148,7 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Category>()
-                .Property(e => e.CategoryName)
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Category>()
@@ -172,7 +172,7 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Supplier>()
-                .Property(e => e.SupplierName)
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Supplier>()
@@ -180,7 +180,7 @@ namespace DB_Models.Framework
                 .IsUnicode(false);
 
             modelBuilder.Entity<Supplier>()
-                .Property(e => e.SupplierAddress)
+                .Property(e => e.Address)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Supplier>()

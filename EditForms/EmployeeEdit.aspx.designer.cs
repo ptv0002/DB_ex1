@@ -42,24 +42,6 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.TextBox lastName;
 
         /// <summary>
-        /// position control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox position;
-
-        /// <summary>
-        /// code control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox code;
-
-        /// <summary>
         /// phoneNumber control.
         /// </summary>
         /// <remarks>
@@ -78,13 +60,13 @@ namespace DB_ex1.EditForms
         protected global::System.Web.UI.WebControls.TextBox address;
 
         /// <summary>
-        /// ddUpdateBy control.
+        /// position control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUpdateBy;
+        protected global::System.Web.UI.WebControls.TextBox position;
 
         /// <summary>
         /// ddStatus control.
@@ -94,6 +76,24 @@ namespace DB_ex1.EditForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddStatus;
+
+        /// <summary>
+        /// idErr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idErr;
+
+        /// <summary>
+        /// updateBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox updateBy;
 
         /// <summary>
         /// SaveButton control.

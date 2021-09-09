@@ -3,7 +3,7 @@
     <asp:Label Font-Bold="true" ForeColor="Black" Font-Size="XX-Large" runat="server" BorderWidth="10" BorderColor="Transparent">Edit Employee</asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpMain" runat="server">
-    <asp:Table CellPadding="4" runat="server" BackColor="Transparent" BorderColor="Transparent" BorderWidth="10" width="50%">
+    <asp:Table CellPadding="4" runat="server" BackColor="Transparent" BorderColor="Transparent" BorderWidth="10" width="100%">
         <asp:TableRow>
             <asp:TableCell Text="Employee ID: "><asp:Label ID="eId" runat="server"/></asp:TableCell>
             <asp:TableCell></asp:TableCell>
@@ -17,21 +17,10 @@
             <asp:TableCell><asp:TextBox ID="lastName" runat="server" width="100%"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="firstName" ErrorMessage="First name is required" ForeColor="Red"/></asp:TableCell>
-            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="lastName" ErrorMessage="Last name is required" ForeColor="Red"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="firstName" ErrorMessage="Required field" ForeColor="Red"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="lastName" ErrorMessage="Required field" ForeColor="Red"/></asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>Position</asp:TableCell>
-            <asp:TableCell>Code</asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell><asp:TextBox ID="position" runat="server" width="100%"/></asp:TableCell>
-            <asp:TableCell><asp:TextBox ID="code" runat="server" width="100%"/></asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="position" ErrorMessage="Position is required" ForeColor="Red"/></asp:TableCell>
-            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="code" ErrorMessage="Code is required" ForeColor="Red"/></asp:TableCell>        
-        </asp:TableRow>
+        
         <asp:TableRow>
             <asp:TableCell>Phone number</asp:TableCell>
             <asp:TableCell>Address</asp:TableCell>
@@ -41,23 +30,32 @@
             <asp:TableCell><asp:TextBox ID="address" runat="server" width="100%"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="phoneNumber" ErrorMessage="Phone number is required" ForeColor="Red"/></asp:TableCell>
-            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="address" ErrorMessage="Address is required" ForeColor="Red"/></asp:TableCell>        
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="phoneNumber" ErrorMessage="Required field" ForeColor="Red"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="address" ErrorMessage="Required field" ForeColor="Red"/></asp:TableCell>        
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell>Update by</asp:TableCell>
+            <asp:TableCell>Position</asp:TableCell>
             <asp:TableCell>Status</asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:DropDownList ID="ddUpdateBy" runat="server" width="100%"/></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="position" runat="server" width="100%"/></asp:TableCell>
             <asp:TableCell><asp:DropDownList ID="ddStatus" runat="server" width="100%"/></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="ddUpdateBy" InitialValue="-Select-" ErrorMessage="This field is required" ForeColor="Red"/></asp:TableCell>        
-            <asp:TableCell></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="position" ErrorMessage="Required field" ForeColor="Red"/></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label Text="Update by (Insert ID)" runat="server"/>&emsp;
+                <asp:Label ID="idErr" runat="server" CssClass="small" ForeColor="Red"/>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell><asp:TextBox ID="updateBy" runat="server" width="100%"/></asp:TableCell>
+            <asp:TableCell><asp:RequiredFieldValidator CssClass="small" runat="server" ControlToValidate="updateBy" ErrorMessage="Required field" ForeColor="Red"/></asp:TableCell>        
         </asp:TableRow>
     </asp:Table>
-    <asp:Label BorderWidth="3" BorderColor="Transparent" runat="server"/>
+    &ensp;
     <asp:Button class= "btn btn-primary" ID="SaveButton" Text="Save" onClick="btnSave_Click" runat="server"/>
     <a class= "btn btn-secondary" href="/Management/EmployeeManagement.aspx">Cancel</a>
 </asp:Content>

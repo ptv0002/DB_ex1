@@ -2,6 +2,7 @@
 using DB_Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,11 +22,24 @@ namespace DB_ex1.Management
         protected void LoadGridGood()
         {
             ListModel model = new ListModel();
-            List<Good> list = model.ListAll_Goods();
+            List<Good> list = model.ListGood(0, ""); // List all Goods
             if (list != null)
             {
                 gv.DataSource = list;
                 gv.DataBind();
+            }
+        }
+
+        protected void gv_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            for ( int i = 0; i < gv.Rows.Count; i++)
+            {
+                int min = Convert.ToInt32(gv.Rows[i].Cells[6].Text);
+                int qty = Convert.ToInt32(gv.Rows[i].Cells[7].Text);
+                if (min >= qty)
+                {
+                    gv.Rows[i].BackColor = System.Drawing.Color.Red;
+                }
             }
         }
     }

@@ -12,6 +12,10 @@ namespace DB_ex1.EditForms
     public partial class CustomerEdit : System.Web.UI.Page
     {
         private static int cusId;
+        UpdateModel updateModel = new UpdateModel();
+        ListModel listModel = new ListModel();
+        CheckModel checkModel = new CheckModel();
+        BindModel bindModel = new BindModel();
         protected void Page_Load(object sender, EventArgs e)
         {
             cusId = Convert.ToInt32(Request.QueryString["Id"].ToString());
@@ -22,66 +26,46 @@ namespace DB_ex1.EditForms
         }
         protected void BindControlValues(int Id)
         {
-            ListModel model = new ListModel();
-            List<Employee> all = model.ListAll_Employee();
-            // Load to ddUpdateBy
-            if (all != null)
-            {
-                ddUpdateBy.DataSource = all;
-                ddUpdateBy.DataTextField = "FullName";
-                ddUpdateBy.DataBind();
-                ddUpdateBy.Items.Insert(0, "-Select-");
-            }
             // Display the customer's info into the textboxes 
-            List<Customer> item = model.ListSingle_Customer(Id);
+            List<Customer> item = listModel.ListCustomer(Id);
             cId.Text = Id.ToString();
             firstName.Text = item.ElementAt(0).FirstName;
             lastName.Text = item.ElementAt(0).LastName;
             score.Text = item.ElementAt(0).MembershipScore.ToString();
             citizenId.Text = item.ElementAt(0).CitizenId;
             phoneNumber.Text = item.ElementAt(0).PhoneNumber;
-            address.Text = item.ElementAt(0).CustomerAddress;
+            address.Text = item.ElementAt(0).Address;
 
-            BindStatus(ddStatus, "Active", "Inactive", item.ElementAt(0).CustomerStatus);
+            bindModel.BindStatus(ddStatus, "Active", "Inactive", item.ElementAt(0).Status);
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            UpdateModel model = new UpdateModel();
-            Customer item = new Customer
+            string emId = updateBy.Text.ToUpper();
+            if (checkModel.CheckCharID(emId) == true)
             {
-
-                // Get updated info and pass into an Employee object before passing into UpdateEmployee method
-                Id = Convert.ToInt32(cId.Text),
-                FirstName = firstName.Text,
-                LastName = lastName.Text,
-                MembershipScore = Convert.ToDouble(score.Text),
-                CitizenId = citizenId.Text,
-                PhoneNumber = phoneNumber.Text,
-                CustomerAddress = address.Text,
-                CustomerStatus = Convert.ToBoolean(ddStatus.SelectedValue),
-                UpdateBy = ddUpdateBy.SelectedItem.Text
-            };
-            model.UpdateCustomer(item);
-            // Redirect to Employee Table after successful update.
-            Response.Redirect("/Management/CustomerManagement.aspx");
-        }
-        public void BindStatus(DropDownList dd, string trueText, string falseText, bool status)
-        {
-            string text;
-            string value;
-            if (status == true)
-            {
-                text = trueText;
-                value = "true";
+                Customer item = new Customer
+                {
+                    // Get updated info and pass into an Employee object before passing into UpdateEmployee method
+                    Id = Convert.ToInt32(cId.Text),
+                    FirstName = firstName.Text,
+                    LastName = lastName.Text,
+                    MembershipScore = Convert.ToDouble(score.Text),
+                    CitizenId = citizenId.Text,
+                    PhoneNumber = phoneNumber.Text,
+                    Address = address.Text,
+                    Status = Convert.ToBoolean(ddStatus.SelectedValue),
+                    UpdateBy = emId,
+                    // Extend ---------- Add company info
+                    Company=""
+                };
+                updateModel.UpdateCustomer(item);
+                // Redirect to Customer Table after successful update.
+                Response.Redirect("/Management/CustomerManagement.aspx");
             }
             else
             {
-                text = falseText;
-                value = "false";
+                idErr.Text = "Invalid ID";
             }
-            dd.Items.Insert(0, new ListItem(text, value.ToString()));
-            dd.Items.Insert(1, new ListItem(trueText, "true"));
-            dd.Items.Insert(2, new ListItem(falseText, "false"));
         }
     }
 }

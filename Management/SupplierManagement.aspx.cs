@@ -21,7 +21,7 @@ namespace DB_ex1.Management
         protected void LoadGrid()
         {
             ListModel model = new ListModel();
-            List<Supplier> list = model.ListAll_Supplier();
+            List<Supplier> list = model.ListSupplier(0);
             if (list != null)
             {
                 gv.DataSource = list;

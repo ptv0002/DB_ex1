@@ -7,10 +7,31 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="LoginCardBody" runat="server">
     <div class="align-content-center">
         <div><asp:Label ID="LoginError" runat="server"></asp:Label></div>
-        <div class="mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
-        <div><asp:Label runat="server">Email</asp:Label></div>
-        <div><asp:TextBox ID="email" runat="server" width="100%"></asp:TextBox></div>  
-        <div class="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="email" ErrorMessage="Please enter your email" ForeColor="Red"></asp:RequiredFieldValidator></div>
+        <div class="mb-3 text-muted">Enter your username, email address and your new password.</div>
+        <asp:TableRow>
+            <asp:TableCell Text="Username" ></asp:TableCell>
+            <asp:TableCell Text="Email"></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell><asp:TextBox ID="username" runat="server" width="100%"></asp:TextBox></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="email" runat="server" TextMode="Email" width="100%" ></asp:TextBox></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="username" ErrorMessage="Username is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>
+            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="email" ErrorMessage="Email is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>        
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell Text="Password" ></asp:TableCell>
+            <asp:TableCell Text="Confirm Password "><asp:CompareValidator CssClass="small" runat="server" ControlToCompare="password" ErrorMessage="Incorrect" ForeColor="Red" ControlToValidate="confirmPassword"></asp:CompareValidator></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell><asp:TextBox ID="password" runat="server" TextMode="Password" width="100%"></asp:TextBox></asp:TableCell>
+            <asp:TableCell><asp:TextBox ID="confirmPassword" runat="server" TextMode="Password" width="100%"></asp:TextBox></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="password" ErrorMessage="Password is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>
+            <asp:TableCell CssClass="small"><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="confirmPassword" ErrorMessage="Confirm password is required" ForeColor="Red"></asp:RequiredFieldValidator></asp:TableCell>        
+        </asp:TableRow>
         <a class="small" href="/Login/Login.aspx">Return to login</a>
         <div><asp:Button class= "btn btn-primary" ID="ResetPasswordButton" runat="server" Text="Reset Password" onclick="btnResetPw_Click" width="100%" /></div>
     </div>

@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountModel.cs" />
+    <Compile Include="CheckModel.cs" />
     <Compile Include="InsertModel.cs" />
     <Compile Include="DeleteModel.cs" />
     <Compile Include="Framework\Account.cs" />
@@ -73,7 +73,7 @@
     <Compile Include="Framework\Supplier.cs" />
     <Compile Include="ListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OtherModel.cs" />
+    <Compile Include="BindModel.cs" />
     <Compile Include="UpdateModel.cs" />
   </ItemGroup>
   <ItemGroup>

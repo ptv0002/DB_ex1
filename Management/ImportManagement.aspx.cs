@@ -15,13 +15,13 @@ namespace DB_ex1.Management
         {
             if (!IsPostBack)
             {
-                LoadGridImportOrder();
+                LoadGrid();
             }
         }
-        protected void LoadGridImportOrder()
+        protected void LoadGrid()
         {
             ListModel model = new ListModel();
-            List<Import_Info> list = model.ListAll_ImportInfo();
+            List<Import_Info> list = model.ListImportInfo(0,null);
             if (list != null)
             {
                 gv.DataSource = list;

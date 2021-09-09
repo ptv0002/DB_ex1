@@ -18,8 +18,9 @@ namespace DB_ex1.Login
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             // Check if email is in the database
-            AccountModel accountModel = new AccountModel();
-            var res = accountModel.CheckEmail(email.Text);
+            InsertModel insertModel = new InsertModel();
+            CheckModel checkModel = new CheckModel();
+            var res = checkModel.CheckEmail(email.Text, "0");
             if (res)
             {
                 // if res = 1, email is already been registered, new register fails
@@ -29,15 +30,17 @@ namespace DB_ex1.Login
             else
             {
                 // Save new account info to the database
-                var newAcc = new Account();
-                newAcc.FirstName = firstName.Text;
-                newAcc.LastName = lastName.Text;
-                newAcc.Username = username.Text;
-                newAcc.Email = email.Text;
-                newAcc.AccPassword = password.Text;
-                accountModel.InsertAccount(newAcc);
+                var item = new Account
+                {
+                    FirstName = firstName.Text,
+                    LastName = lastName.Text,
+                    Username = username.Text,
+                    Email = email.Text,
+                    AccPassword = password.Text
+                };
+                insertModel.InsertAccount(item);
                 // Redirect user to the login page after saving new account info
-                Response.Redirect("Login.aspx");
+                Response.Redirect("../Login.aspx");
             }
         }
     }

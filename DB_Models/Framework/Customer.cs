@@ -24,13 +24,15 @@ namespace DB_Models.Framework
         public string LastName { get; set; }
 
         [StringLength(100)]
-        public string FullName { get; set; }
-        public bool CustomerStatus { get; set; }
+        public string Name { get; set; }
+        public bool Status { get; set; }
         [StringLength(20)]
         public string PhoneNumber { get; set; }
+        [StringLength(50)]
+        public string Company { get; set; }
 
         [StringLength(100)]
-        public string CustomerAddress { get; set; }
+        public string Address { get; set; }
 
         [StringLength(20)]
         public string CitizenId { get; set; }
@@ -46,8 +48,6 @@ namespace DB_Models.Framework
 
         [StringLength(100)]
         public string UpdateBy { get; set; }
-
-
         public virtual ICollection<Export_Info> Export_Info { get; set; }
     }
 }

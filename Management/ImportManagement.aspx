@@ -11,9 +11,9 @@
                     <asp:LinkButton ForeColor = "#333333" runat= "server" href= '<%#"/EditForms/ImportOrderEdit.aspx?Id="+DataBinder.Eval(Container.DataItem,"Id") %>' Text="Edit" />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField = "Id" HeaderText= "ID" ReadOnly="True"/>
+            <asp:BoundField DataField = "Id" HeaderText= "ID" ReadOnly="True" Visible="true"/>
             <asp:BoundField DataField = "SupplierName" HeaderText= "Supplier name" ReadOnly= "True" />
-            <asp:BoundField DataField = "TotalImport" HeaderText= "Total import" ReadOnly= "True" />
+            <asp:BoundField DataField = "Total" HeaderText= "Total" ReadOnly= "True" />
             <asp:BoundField DataField = "PaymentStatus" HeaderText= "Payment status" ReadOnly= "True" />
             <asp:BoundField DataField = "PaymentType" HeaderText= "Payment type" ReadOnly= "True" />
             <asp:BoundField DataField = "CreateDate" HeaderText= "Create date" ReadOnly= "True" />

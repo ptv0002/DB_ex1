@@ -15,31 +15,69 @@ namespace DB_Models
         {
             context = new DB_ex1_Context();
         }
-
+        public void InsertAccount(Account account)
+        {
+            // Insert new account into database
+            string cmd = "insert into Account (FirstName, LastName, Username, AccPassword," +
+                " Email, CreateBy, CreateDate) values ('" + account.FirstName +
+                "', '" + account.LastName + "', '" + account.Username + "', '" +
+                account.AccPassword + "', '" + account.Email + "', 'Self-Registered', GETDATE());";
+            context.Database.ExecuteSqlCommand(cmd);
+        }
         public int InsertImportInfo(Import_Info item, DB_ex1_Context con)
         {
             object[] sqlParams =
             {
-                new SqlParameter("@supplier", item.SupplierName),
-                new SqlParameter("@total", item.TotalImport),
+                new SqlParameter("@supplier", item.SupplierId),
                 new SqlParameter("@payStatus", Convert.ToByte(item.PaymentStatus)),
                 new SqlParameter("@payType", item.PaymentType),
-                new SqlParameter("@creatby", item.CreateBy)
+                new SqlParameter("@creatby", item.CreateBy),
+                new SqlParameter("@discount", item.OtherDiscount)
             };
-            var id = con.Database.SqlQuery<int>("Sp_ImportInfo_Insert @supplier, @total, @payStatus, @payType, @creatby", sqlParams).SingleOrDefault();
+            var id = con.Database.SqlQuery<int>("Sp_ImportInfo_Insert @supplier, @payStatus, @payType, @creatby, @discount", sqlParams).SingleOrDefault();
             return id;
         }
-        public void InsertImportGood(Import_Goods item, DB_ex1_Context con)
+        public int InsertExportInfo(Export_Info item, DB_ex1_Context con)
+        {
+            object[] sqlParams =
+            {
+                new SqlParameter("@customer", item.CustomerId),
+                new SqlParameter("@payStatus", Convert.ToByte(item.PaymentStatus)),
+                new SqlParameter("@payType", item.PaymentType),
+                new SqlParameter("@creatby", item.CreateBy),
+                new SqlParameter("@discount", item.OtherDiscount),
+                new SqlParameter("@card", Convert.ToByte(item.CardDiscount))
+            };
+            var id = con.Database.SqlQuery<int>("Sp_ExportInfo_Insert @customer, @payStatus, @payType, @creatby, @discount, @card", sqlParams).SingleOrDefault();
+            return id;
+        }
+        public int InsertImportGood(Import_Goods item, DB_ex1_Context con)
         {
             object[] sqlParams =
             {
                 new SqlParameter("@infoId", item.ImportInfoId),
                 new SqlParameter("@goodsName", item.GoodsName),
-                new SqlParameter("@qty", item.imQuantity),
+                new SqlParameter("@qty", item.Quantity),
                 new SqlParameter("@price", item.Price),
+                new SqlParameter("@discount", item.Discount),
                 new SqlParameter("@total", item.TotalPrice)
             };
-            con.Database.ExecuteSqlCommand("Sp_ImportGoods_Insert @infoId, @goodsName, @price, @total, @qty", sqlParams);
+            var id = con.Database.SqlQuery<int>("Sp_ImportGoods_Insert @infoId, @goodsName, @price, @total, @qty, @discount", sqlParams).SingleOrDefault();
+            return id;
+        }
+        public int InsertExportGood(Export_Goods item, DB_ex1_Context con)
+        {
+            object[] sqlParams =
+            {
+                new SqlParameter("@infoId", item.ExportInfoId),
+                new SqlParameter("@goodsName", item.GoodsName),
+                new SqlParameter("@qty", item.Quantity),
+                new SqlParameter("@price", item.Price),
+                new SqlParameter("@discount", item.Discount),
+                new SqlParameter("@total", item.TotalPrice)
+            };
+            var id = con.Database.SqlQuery<int>("Sp_ExportGoods_Insert @infoId, @goodsName, @price, @total, @qty, @discount", sqlParams).SingleOrDefault();
+            return id;
         }
         public void InsertEmployee(Employee item)
         {
@@ -48,9 +86,9 @@ namespace DB_Models
                 new SqlParameter("@first", item.FirstName),
                 new SqlParameter("@last", item.LastName),
                 new SqlParameter("@phone", item.PhoneNumber),
-                new SqlParameter("@address", item.EmployeeAddress),
+                new SqlParameter("@address", item.Address),
                 new SqlParameter("@createby", item.CreateBy),
-                new SqlParameter("@code", item.EmployeeCode),
+                new SqlParameter("@code", item.CharID),
                 new SqlParameter("@position", item.Position)
             };
             context.Database.ExecuteSqlCommand("Sp_Employee_Insert @first, @last, @phone, @address, @createby, @code, @position",sqlParams);
@@ -59,12 +97,13 @@ namespace DB_Models
         {
             object[] sqlParams =
             {
-                new SqlParameter("@name", item.SupplierName),
+                new SqlParameter("@name", item.Name),
                 new SqlParameter("@phone", item.PhoneNumber),
-                new SqlParameter("@address", item.SupplierAddress),
+                new SqlParameter("@address", item.Address),
+                new SqlParameter("@contact", item.ContactInfo),
                 new SqlParameter("@createby", item.CreateBy)
             };
-            context.Database.ExecuteSqlCommand("Sp_Supplier_Insert @name, @phone, @address, @createby", sqlParams);
+            context.Database.ExecuteSqlCommand("Sp_Supplier_Insert @name, @phone, @address, @createby, @contact", sqlParams);
         }
         public void InsertCustomer(Customer item)
         {
@@ -73,25 +112,26 @@ namespace DB_Models
                 new SqlParameter("@first", item.FirstName),
                 new SqlParameter("@last", item.LastName),
                 new SqlParameter("@phone", item.PhoneNumber),
-                new SqlParameter("@address", item.CustomerAddress),
+                new SqlParameter("@address", item.Address),
+                new SqlParameter("@company", item.Company),
                 new SqlParameter("@createby", item.CreateBy),
                 new SqlParameter("@score", item.MembershipScore),
                 new SqlParameter("@citizenId", item.CitizenId)
             };
-            context.Database.ExecuteSqlCommand("Sp_Customer_Insert @first, @last, @phone, @address, @createby, @score, @citizenId", sqlParams);
+            context.Database.ExecuteSqlCommand("Sp_Customer_Insert @first, @last, @phone, @address, @createby, @score, @citizenId, @company", sqlParams);
         }
         public void InsertGood(Good item)
         {
             // Insert new good into database
             object[] sqlParams =
             {
-                new SqlParameter("@name", item.GoodsName),
-                new SqlParameter("@cat", item.categoryName),
-                new SqlParameter("@code", item.GoodsCode),
+                new SqlParameter("@name", item.Name),
+                new SqlParameter("@cat", item.CategoryName),
+                new SqlParameter("@code", item.Barcode),
                 new SqlParameter("@importPrice", item.ImportPrice),
                 new SqlParameter("@minQty", item.MinQuantity),
-                new SqlParameter("@qty", item.GoodsQuantity),
-                new SqlParameter("@tax", item.TaxPercent),
+                new SqlParameter("@qty", item.Quantity),
+                new SqlParameter("@tax", item.Tax),
                 new SqlParameter("@createby", item.CreateBy)
             };
             // Insert new good into database
@@ -101,10 +141,21 @@ namespace DB_Models
         {
             object[] sqlParams =
             {
-                new SqlParameter("@name", item.CategoryName),
+                new SqlParameter("@name", item.Name),
                 new SqlParameter("@createby", item.CreateBy)
             };
             context.Database.ExecuteSqlCommand("Sp_Category_Insert @name, @createby",sqlParams);
+        }
+        public void InsertCardType(CardType item)
+        {
+            object[] sqlParams =
+            {
+                new SqlParameter("@name", item.Name),
+                new SqlParameter("@createby", item.CreateBy),
+                new SqlParameter("@bound", item.LowerBound),
+                new SqlParameter("@percent", item.PercentDiscount)
+            };
+            context.Database.ExecuteSqlCommand("Sp_CardType_Insert @name, @createby, @bound, @percent", sqlParams);
         }
     }
 }

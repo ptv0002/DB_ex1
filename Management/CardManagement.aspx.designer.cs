@@ -11,7 +11,7 @@ namespace DB_ex1.Management
 {
 
 
-    public partial class CategoryManagement
+    public partial class CardManagement
     {
 
         /// <summary>
@@ -31,6 +31,24 @@ namespace DB_ex1.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox addName;
+
+        /// <summary>
+        /// addBound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox addBound;
+
+        /// <summary>
+        /// addPercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox addPercent;
 
         /// <summary>
         /// createBy control.
@@ -76,6 +94,24 @@ namespace DB_ex1.Management
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox editName;
+
+        /// <summary>
+        /// editBound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox editBound;
+
+        /// <summary>
+        /// editPercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox editPercent;
 
         /// <summary>
         /// ddStatus control.
